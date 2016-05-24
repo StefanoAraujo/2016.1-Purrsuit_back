@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= stylesheet_link_tag "stylesheet.css" %>
+  </head>
+  <body>
+   <div class="principalSquare">
+      <ul class="nav nav-pills">
+   	   <li role="presentation"><%= link_to "Início", login_path %></li>
+        <li role="presentation" class="active"><a href="#">Achievement</a></li>
+        <li role="presentation"><%= link_to "Quests", :quests_all%></li>
+      </ul>
+      <div class="listSquare">
+				<%= form_for(@achievement) do | form | %>
+     		  <%= form.text_field :name, :class => "gamification_fields", :placeholder => "Achievement's name"%>
+   			  <%= form.number_field :experience_points, :class => "gamification_fields", :placeholder => "Experience Points"%> 
+    		  <%= form.text_field :description, :class => "gamification_fields", :placeholder => "Description" %> 
+  		    <%= form.submit "Create Achievement", :class => "gamification_button btn btn-default btn-lg"%>
+		    <% end %>
+        <%= button_to "Cancel", :achievements_all, :class => "btn btn-default btn
+-lg gamification_button", :method => :get %>
+      </div>
+    </div>
+  </body>
+</html>
+

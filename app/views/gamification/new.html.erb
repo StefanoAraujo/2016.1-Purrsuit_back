@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<%= form_for(@gamification) do | form | %>
+			<%= form.text_field :name, :placeholder => "Gamification's name"%>
+			<%= form.number_field :experience_points, :placeholder => "Experience Points"%>
+			<%= form.text_field :description, :placeholder => "Description" %>
+			<%= form.submit "Create a gamification"%>
+		<% end %>
+	</body>
+</html>

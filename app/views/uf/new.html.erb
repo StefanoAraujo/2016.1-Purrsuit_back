@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+	<body>
+	
+	<%= form_for(@uf) do | form | %>
+	    <%= form.text_field :name, :placeholder => "UF's name"%>
+      <%= form.text_field :initials, :placeholder => "Initials" %>
+      <%= form.submit "Create UF"%>		
+	<% end %>
+	</body>
+</html>

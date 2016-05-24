@@ -1,0 +1,23 @@
+<h1>Editing uf</h1>
+
+<%= form_for @party do |f| %>
+
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :initials %><br>
+    <%= f.text_area :initials %>
+  </p>
+
+	<p>
+		<%= f.label :Uf_id %><br>
+		<%= f.number_field :uf_id %>
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
+
