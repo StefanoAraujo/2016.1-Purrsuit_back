@@ -1,4 +1,4 @@
-class QuestController < ApplicationController
+class QuestsController < ApplicationController
 
 	def all
 		@quest = Quest.all
@@ -51,7 +51,7 @@ class QuestController < ApplicationController
 		redirect_to :quests_all
 	end
 
-	
+
 	private
 
 	def quest_params

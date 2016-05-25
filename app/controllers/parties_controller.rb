@@ -1,4 +1,4 @@
-class PartyController < ApplicationController
+class PartiesController < ApplicationController
 
   def all
     render json: Party.all
@@ -49,4 +49,3 @@ class PartyController < ApplicationController
     params.require(:party).permit(:name, :initials, :uf_id)
   end
 end
-

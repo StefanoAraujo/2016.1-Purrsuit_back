@@ -1,4 +1,4 @@
-class GamificationController < ApplicationController
+class GamificationsController < ApplicationController
 	def all
 		@gamifications = Gamification.all
 	end

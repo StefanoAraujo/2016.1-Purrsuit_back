@@ -1,4 +1,4 @@
-class DeputyController < ApplicationController
+class DeputiesController < ApplicationController
 
   def all
     deputy_order = Deputy.order(:deputy_name)

@@ -1,4 +1,4 @@
-class UfController < ApplicationController
+class UfsController < ApplicationController
 
   def all
     render json: Uf.all
@@ -51,5 +51,3 @@ class UfController < ApplicationController
     params.require(:uf).permit(:name, :initials)
   end
 end
-
-

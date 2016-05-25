@@ -1,4 +1,4 @@
-class AchievementController < ApplicationController
+class AchievementsController < ApplicationController
 
 	def all
 		@achievement = Achievement.all
