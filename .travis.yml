@@ -7,4 +7,4 @@ env:
 after_success:
   - "curl -o /tmp/travis-automerge https://raw.githubusercontent.com/cdown/travis-automerge/master/travis-automerge"
   - "chmod a+x /tmp/travis-automerge"
-  - "BRANCHES_TO_MERGE_REGEX='^us/' BRANCH_TO_MERGE_INTO=desenvolvimento GITHUB_REPO=PurrSuit/backend_purrsuit /tmp/travis-automerge"
+  - "BRANCHES_TO_MERGE_REGEX='^us#' BRANCH_TO_MERGE_INTO=desenvolvimento GITHUB_REPO=PurrSuit/backend_purrsuit /tmp/travis-automerge"
