@@ -8,6 +8,7 @@ class CreateDeputies < ActiveRecord::Migration
       t.string :image_path
       t.references :party
       t.references :uf
+
     end
   end
 end
