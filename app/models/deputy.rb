@@ -5,6 +5,7 @@ require "nokogiri"
 class Deputy < ActiveRecord::Base
   acts_as :person
   belongs_to :uf
+	belongs_to :party
 
   # validates_numericality_of :age
   # validates_numericality_of :registration
