@@ -7,7 +7,13 @@ class Deputy < ActiveRecord::Base
   belongs_to :uf
 	belongs_to :party
 
-  # validates_numericality_of :age
+  has_many :passive_relationships, class_name: "Relationship",
+                                   foreign_key: "followed_id",
+                                   dependent: :destroy
+
+  has_many :followers, through: :passive_relationships, source: :follower
+
+  validates_numericality_of :followers_count
   # validates_numericality_of :registration
 
   # validates :name, presence: true, length: {maximum: 50}

@@ -61,6 +61,15 @@ class DeputiesController < ApplicationController
       redirect_to :deputies_all
   end
 
+  def followed_deputies
+    user_id = params[:id]
+    user = User.find_by(id: user_id)
+    followed_deputies = user.following
+    render json: followed_deputies
+  end
+
+
+
   private
   def get_params
         params.require(:deputy).permit(:name,:gender,:email,:age,:registration,:legislation_situation)
