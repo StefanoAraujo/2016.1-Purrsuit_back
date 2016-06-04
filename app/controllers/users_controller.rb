@@ -99,6 +99,22 @@ class UsersController < ApplicationController
     user.unfollow(deputy)
   end
 
+  def ionic_login
+    user = User.find_by(email: params[:email])
+    begin
+      if user && user.authenticate(params[:password])
+        puts "login successfull!"
+        puts user
+        render json: user
+      else
+        raise "login failed!"
+      end
+    rescue RuntimeError => error_login
+      puts "#{error_login}"
+      redirect_to 'login'
+    end
+  end
+
   private
     def get_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)

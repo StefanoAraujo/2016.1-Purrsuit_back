@@ -59,4 +59,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   get 'login/signin' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
+
+  #ionic login
+  get 'signIn' => 'users#ionic_login'
 end
