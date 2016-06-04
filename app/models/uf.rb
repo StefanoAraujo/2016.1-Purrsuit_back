@@ -1,4 +1,4 @@
-class Uf < ActiveRecord::Base
+				class Uf < ActiveRecord::Base
 	has_many :deputies
 	has_many :users
 

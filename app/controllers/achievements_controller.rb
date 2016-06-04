@@ -10,7 +10,13 @@ class AchievementsController < ApplicationController
 	end
 
 	def show
-		render json: Achievement.find(params[:id])
+		achievements = Achievement.where(params[:id])
+		@achievement = achievements.first
+	
+		respond_to do |format|
+			format.html
+			format.json { render json: @achievement }
+		end
 	end
 
 	def new

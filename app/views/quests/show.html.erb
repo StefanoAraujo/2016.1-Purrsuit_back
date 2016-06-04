@@ -1,0 +1,24 @@
+
+      <% if current_user && current_user.admin? %> 
+			<% else %>
+        <script type="text/javascript">
+          window.location.href="/logout"
+        </script>
+      <% end %>
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @quest.name %>
+</p>
+  <strong>Description:</strong>
+  <%= @quest.description %>
+</p>
+
+<p>
+<strong>Experience:</strong>
+<%= @quest.experience_points %>
+</p>
+
+<%= button_to 'Delete', quests_delete_path , method: :delete %>
+<%= button_to 'Delete', quests_delete_path , method: :delete %>

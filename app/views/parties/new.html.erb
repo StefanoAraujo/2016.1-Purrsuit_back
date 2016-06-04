@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+  <%= form_for(@party) do | form | %>
+      <%= form.text_field :name, :placeholder => "Party's name"%>
+			<%= form.text_field :initials, :placeholder => "Initials" %>
+			<%= form.number_field :uf_id, :placeholder => "UF id" %>
+      <%= form.submit "Create Party"%>
+  <% end %>
+  </body>
+</html>
+

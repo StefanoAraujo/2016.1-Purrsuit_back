@@ -4,13 +4,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])
+    user = user = User.find_by(email: params[:session][:email])
     begin
-      if user && user.authenticate(params[:password])
+      if user && user.authenticate(params[:session][:password])
         session[:user_id] = user.id
         puts "login successfull!"
         puts user
-        render json: user
+        redirect_to :achievements_all
       else
         raise "login failed!"
       end
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to '/'
+    redirect_to '/login'
   end
 
 end

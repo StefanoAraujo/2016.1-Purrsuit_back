@@ -76,6 +76,45 @@ class UsersController < ApplicationController
       end
   end
 
+  def followers
+    deputy_id = params[:id]
+    deputy = Deputy.find_by(id: deputy_id)
+    deputy_followers = deputy.followers.count
+    render json: deputy_followers
+  end
+
+  def follow_deputy
+    deputy_id = params[:id]
+    user_id = params[:id]
+    user = User.find_by(id: user_id)
+    deputy = Deputy.find_by(id: deputy_id)
+    user.follow(deputy)
+  end
+
+  def unfollow_deputy
+    deputy_id = params[:id]
+    user_id = params[:id]
+    user = User.find_by(id: user_id)
+    deputy = Deputy.find_by(id: deputy_id)
+    user.unfollow(deputy)
+  end
+
+  def ionic_login
+    user = User.find_by(email: params[:email])
+    begin
+      if user && user.authenticate(params[:password])
+        puts "login successfull!"
+        puts user
+        render json: user
+      else
+        raise "login failed!"
+      end
+    rescue RuntimeError => error_login
+      puts "#{error_login}"
+      redirect_to 'login'
+    end
+  end
+
   private
     def get_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)

@@ -5,16 +5,23 @@ require "nokogiri"
 class Deputy < ActiveRecord::Base
   acts_as :person
   belongs_to :uf
+	belongs_to :party
 
-  # validates_numericality_of :age
-  # validates_numericality_of :registration
+  has_many :passive_relationships, class_name: "Relationship",
+                                   foreign_key: "followed_id",
+                                   dependent: :destroy
 
-  # validates :name, presence: true, length: {maximum: 50}
+  has_many :followers, through: :passive_relationships, source: :follower
+
+  validates_numericality_of :followers_count
+  validates_numericality_of :registration
+  validates :name, presence: true, length: {maximum: 50}
+  validates :deputy_name, presence: true
   # validates :age, presence: true
   # validates :gender, presence: true
-  # validates :registration, presence: true, uniqueness: true
-  # validates :legislation_situation, presence: true, length: {maximum: 100}
-
+  validates :registration, presence: true, uniqueness: true
+  validates :legislation_situation, presence: true, length: {maximum: 100}
+  validates :email, presence:true
 
   def self.parse_deputies
     Uf.populate_ufs
