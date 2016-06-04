@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= stylesheet_link_tag "stylesheet.css" %>
+	<%= stylesheet_link_tag "materialize.css" %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body class="boddy">
+    <nav>
+      <div class="nav-wrapper">
+        <img src="<%= asset_path('PurrsuitPersonagem.png')%>" class="purrSuitImage other-page" />
+			<h1 id="tittle" class="brand-logo">PurrSuit</h1>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+        	<li class="active"><%= link_to "Achievements", :achievements_all %></li>
+        	<li><%= link_to "Quests", :quests_all%></li>
+					<li><%= link_to "Logout", logout_path%></li>
+      </ul>
+    </nav>
+		<div class="principalSquare">
+    <% if current_user && current_user.admin? %>
+			<div class="listSquare">
+				<% @achievement.each do | a | %>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title"><%= a.name %></h3>
+							<span class="label label-default">Achievement</span>
+						</div>
+						<div class="panel-body">
+							<%= a.description%><br>
+							<div class="btn-toolbar button_group" role="group">	
+								<%= button_to "Edit", achievements_edit_path(a), :method => :get, :id => "option-button", :class => "btn btn-default btn-xs" %>
+								<%= button_to "Delete", achievements_delete_path(a), :method => :delete, :id => "option-button", :class => "btn btn-default btn-xs" %>
+							</div>
+						</div>
+					</div>
+        		<% end %>
+     		 </div>
+      <% else %>
+        <script type="text/javascript">
+          window.location.href="/logout"
+        </script>
+      <% end %>
+		</div>
+		<a href="new" id="newThing" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+	</body>
+</html>
+

@@ -2,14 +2,22 @@
 <html>
   <head>
     <%= stylesheet_link_tag "stylesheet.css" %>
+	<%= stylesheet_link_tag "materialize.css" %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
-  <body>
-    <div class="principalSquare">
-      <ul class="nav nav-pills">
-        <li role="presentation"><a href="#">Início</a></li>
-       <li role="presentation"><%= link_to "Achievements", :achievements_all%></li>
-        <li role="presentation" class="active"><a href="#">Quests</a></li>
+  <body class="boddy">
+    <nav>
+      <div class="nav-wrapper">
+        <img src="<%= asset_path('PurrsuitPersonagem.png')%>" class="purrSuitImage other-page" />
+			<h1 id="tittle" class="brand-logo">PurrSuit</h1>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+        	<li><%= link_to "Achievements", :achievements_all %></li>
+        	<li class="active"><%= link_to "Quests", :quests_all%></li>
+			<li><%= link_to "Logout", logout_path%></li>
       </ul>
+    </nav>
+    <div class="principalSquare">
+    <% if current_user && current_user.admin? %>
       <div class="listSquare">
         <%= form_for :quest, url: quests_update_path, method: :put do | form | %>
           <%= form.text_field :name, :class => "gamification_fields", :placeholder => "Quest's name"%>
@@ -20,6 +28,11 @@
         <%= button_to "Cancel", :quests_all, :class => "btn btn-default btn
 -lg gamification_button", :method => :get %>
       </div>
+      <% else %>
+        <script type="text/javascript">
+          window.location.href="/logout"
+        </script>
+      <% end %>
     </div>
   </body>
 </html>

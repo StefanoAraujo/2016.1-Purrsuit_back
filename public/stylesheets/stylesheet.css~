@@ -28,6 +28,12 @@
 	margin-left: 0px;
 }
 
+#option-button{
+	width: 60px;
+	height: 20px;
+	margin-left: 5px;
+	float: left;
+}
 
 .create_button{
 	float: right;
