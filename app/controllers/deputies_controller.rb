@@ -5,22 +5,26 @@ class DeputiesController < ApplicationController
     render json: deputy_order
   end
 
+  def new
+    @deputy = Deputy.new
+    render :nothing =>true
+  end
+
   def show
     deputy_id = params[:id]
     selected_deputies = Deputy.where(id: deputy_id)
-    deputy = nil
+    @deputy = nil
     if (selected_deputies.length > 0)
-      deputy = selected_deputies.first
+      @deputy = selected_deputies.first
     else
-      raise "error"
+      raise "ERROR"
     end
-    render json:deputy
+    render json: @deputy
   end
 
   def search
     deputy_contains = params[:toSearch]
 
-    #Removing invalid spaces
     deputy_contains.strip!
     if deputy_contains.length
       deputies_found = Deputy.where("deputy_name LIKE ?", "%#{deputy_contains}%")
@@ -36,29 +40,33 @@ class DeputiesController < ApplicationController
   end
 
   def create
-    new_deputy = Deputy.new(get_params)
-    deputy_saved = new_deputy.save
+    @deputy = Deputy.new(deputy_params)
+    deputy_saved = @deputy.save
       if deputy_saved
-        render json: deputy
+        render json: @deputy
       else
-        raise "error"
+        render :nothing=>true
       end
   end
 
   def update
     deputy_id = params[:id]
     deputies = Deputy.where(id: deputy_id)
-    deputy = deputies.first
-    deputy.update(get_params)
-    render json: deputy
+    @deputy = deputies.first
+    @deputy.update(deputy_params)
+    render json: @deputy
   end
 
   def delete
     deputy_id = params[:id]
-    deputies = Deputy.where(id: deputy_id)
-    deputy = deputy.first
-    deputy.destroy
+    selected_deputies = Deputy.where(id: deputy_id)
+    if (selected_deputies.length > 0)
+      @deputy = selected_deputies.first
+      @deputy.destroy
       redirect_to :deputies_all
+    else
+      render :nothing => true
+    end
   end
 
   def followed_deputies
@@ -68,10 +76,8 @@ class DeputiesController < ApplicationController
     render json: followed_deputies
   end
 
-
-
   private
-  def get_params
-        params.require(:deputy).permit(:name,:gender,:email,:age,:registration,:legislation_situation)
+  def deputy_params
+      params.require(:deputy).permit(:name,:deputy_name, :email,:registration,:legislation_situation,:gender,:image_path,  :uf_id, :party_id)
   end
 end

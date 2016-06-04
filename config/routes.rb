@@ -10,12 +10,13 @@ Rails.application.routes.draw do
 
 
   get 'deputies/all' => 'deputies#all', format: :json
+  get 'deputies/new' => 'deputies#new'
+  post 'deputies/create' => 'deputies#create', format: :json
   get 'deputies/:id' => 'deputies#show', format: :json
+  post 'deputies/update' => 'deputies#update', format: :json
   get 'deputies/search/:toSearch' => 'deputies#search', format: :json
   get 'users/:id/followed_deputies' => 'deputies#followed_deputies', format: :json
-
   delete 'deputies/:id' => 'deputies#delete', as: :deputies_delete
-
 
   get 'gamifications/all' => 'gamifications#all', format: :json
   get 'gamification/:id' => 'gamifications#show', as: :show_gamification

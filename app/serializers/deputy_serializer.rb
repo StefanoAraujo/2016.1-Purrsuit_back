@@ -1,6 +1,6 @@
 class DeputySerializer < ActiveModel::Serializer
-  attributes :id, :name, :deputy_name, :email, :gender, :age, :registration,
-  :legislation_situation, :uf, :party, :image_path, :followers_count
+
+attributes :id, :name, :gender, :email, :age, :uf_id, :deputy_name, :registration, :legislation_situation,:followers_count, :image_path, :party_id
 
 	private
 	def uf
@@ -9,4 +9,5 @@ class DeputySerializer < ActiveModel::Serializer
 	def party
 		PartySerializer.new(object.party).attributes
 	end
+
 end

@@ -14,14 +14,14 @@ class Deputy < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
 
   validates_numericality_of :followers_count
-  # validates_numericality_of :registration
-
-  # validates :name, presence: true, length: {maximum: 50}
+  validates_numericality_of :registration
+  validates :name, presence: true, length: {maximum: 50}
+  validates :deputy_name, presence: true
   # validates :age, presence: true
   # validates :gender, presence: true
-  # validates :registration, presence: true, uniqueness: true
-  # validates :legislation_situation, presence: true, length: {maximum: 100}
-
+  validates :registration, presence: true, uniqueness: true
+  validates :legislation_situation, presence: true, length: {maximum: 100}
+  validates :email, presence:true
 
   def self.parse_deputies
     Uf.populate_ufs
