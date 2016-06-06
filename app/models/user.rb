@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, length: {maximum: 255}
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-	validates :nickname, presence: true, length: { minimum: 3, maximum: 10 }, uniqueness: true
+	validates :nickname, presence: true, length: { maximum: 20 }, uniqueness: true
 
   def admin?
     self.role_admin
