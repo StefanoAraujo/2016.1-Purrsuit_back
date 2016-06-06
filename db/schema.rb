@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20160603011320) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string  "nickname"
     t.string  "password_digest"
     t.integer "experience_points", default: 0,     null: false
     t.boolean "role_admin",        default: false, null: false

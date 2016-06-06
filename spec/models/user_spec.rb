@@ -10,6 +10,12 @@ describe User do
     expect(build(:user)).to be_valid
   end
 
+	it "is invalid without a nickname" do
+		user = build(:user, nickname: nil)
+		expect(user).to have(2).errors_on(:nickname)
+		expect(user).to_not be_valid
+	end
+
   it "Should follow and unfollow a deputy" do
     user = create(:user)
     deputy_example = create(:deputy)
