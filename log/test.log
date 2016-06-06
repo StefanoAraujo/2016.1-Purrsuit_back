@@ -11712,3 +11712,1716 @@ Completed 200 OK in 10ms (Views: 0.6ms | ActiveRecord: 1.0ms)
   [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
   [1m[35mDeputy Exists (0.1ms)[0m  SELECT  1 AS one FROM "deputies" LEFT OUTER JOIN "people" ON "people"."actable_id" = "deputies"."id" AND "people"."actable_type" = ? INNER JOIN "relationships" ON "deputies"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "deputies"."id" = ? LIMIT 1  [["actable_type", "Deputy"], ["follower_id", 1], ["id", 1]]
   [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36m (108.3ms)[0m  [1mDELETE FROM "achievements";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'achievements';[0m
+  [1m[35m (65.4ms)[0m  DELETE FROM "cabinets";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'cabinets';
+  [1m[36m (65.7ms)[0m  [1mDELETE FROM "deputies";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'deputies';[0m
+  [1m[35m (87.8ms)[0m  DELETE FROM "gamifications";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.4ms)[0m  DELETE FROM sqlite_sequence where name = 'gamifications';
+  [1m[36m (53.8ms)[0m  [1mDELETE FROM "parties";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.2ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'parties';[0m
+  [1m[35m (65.2ms)[0m  DELETE FROM "people";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'people';
+  [1m[36m (53.8ms)[0m  [1mDELETE FROM "quests";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'quests';[0m
+  [1m[35m (54.1ms)[0m  DELETE FROM "relationships";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'relationships';
+  [1m[36m (54.2ms)[0m  [1mDELETE FROM "ufs";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'ufs';[0m
+  [1m[35m (65.0ms)[0m  DELETE FROM "users";
+  [1m[36m (0.3ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by DeputiesController#new as HTML
+  Rendered text template (0.0ms)
+Completed 200 OK in 29ms (Views: 12.2ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1674 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)  [["deputy_name", "Jettie Herman"], ["registration", 1674], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["actable_type", "Deputy"], ["name", "Molly Metz"], ["email", "ellen.hammes@bins.org"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:07:59.815863"], ["updated_at", "2016-06-06 17:07:59.815863"], ["actable_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by DeputiesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDeputy Load (0.2ms)[0m  [1mSELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?[0m  [["id", 1]]
+  [1m[35mPerson Load (0.3ms)[0m  SELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)
+Completed 200 OK in 19ms (Views: 2.3ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.3ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1133 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Jaiden Terry III"], ["registration", 1133], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Miss Ocie Veum"], ["email", "marina_walker@collier.net"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:07:59.852297"], ["updated_at", "2016-06-06 17:07:59.852297"], ["actable_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DeputiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mPerson Load (0.4ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "deputies"
+Processing by DeputiesController#create as HTML
+  Parameters: {"deputy"=>{"name"=>"Keith Kohler I", "deputy_name"=>"Clement Stokes", "email"=>"colin@nader.io", "registration"=>"1916", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+Unpermitted parameter: followers_count
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1916 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Clement Stokes"], ["registration", 1916], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Keith Kohler I"], ["email", "colin@nader.io"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:07:59.883949"], ["updated_at", "2016-06-06 17:07:59.883949"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 11ms (Views: 1.3ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "deputies"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+Processing by DeputiesController#create as HTML
+  Parameters: {"deputy"=>{"name"=>"Owen Bailey", "deputy_name"=>nil, "email"=>"lizeth@manteernser.name", "registration"=>"1402", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+Unpermitted parameter: followers_count
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1402 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered text template (0.0ms)
+Completed 200 OK in 10ms (Views: 0.7ms | ActiveRecord: 0.7ms)
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1737 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)  [["deputy_name", "Ola Batz"], ["registration", 1737], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["actable_type", "Deputy"], ["name", "Reba Barton"], ["email", "julianne_bauch@framimoriette.biz"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:07:59.920029"], ["updated_at", "2016-06-06 17:07:59.920029"], ["actable_id", 1]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+Processing by DeputiesController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 1]]
+  [1m[35mDeputy Load (0.3ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mRelationship Load (0.2ms)[0m  [1mSELECT "relationships".* FROM "relationships" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 1]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/deputies/all
+Completed 302 Found in 28ms (ActiveRecord: 2.3ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "deputies"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1723 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Nome"], ["registration", 1723], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Piper Hickle"], ["email", "noemie_stroman@davis.io"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:07:59.964104"], ["updated_at", "2016-06-06 17:07:59.964104"], ["actable_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DeputiesController#update as HTML
+  Parameters: {"id"=>"1", "deputy"=>{"name"=>"Mudando", "deputy_name"=>"Brayan Klocko MD", "email"=>"nya@wehnerlittle.org", "registration"=>"1240", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+  [1m[35mDeputy Load (0.2ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  ORDER BY "deputies"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+Unpermitted parameter: followers_count
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE ("deputies"."registration" = 1240 AND "deputies"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "deputies" SET "deputy_name" = ?, "registration" = ? WHERE "deputies"."id" = ?  [["deputy_name", "Brayan Klocko MD"], ["registration", 1240], ["id", 1]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "people" SET "name" = ?, "email" = ?, "updated_at" = ? WHERE "people"."id" = ?[0m  [["name", "Mudando"], ["email", "nya@wehnerlittle.org"], ["updated_at", "2016-06-06 17:07:59.984329"], ["id", 1]]
+  [1m[35mSQL (0.2ms)[0m  UPDATE "people" SET "updated_at" = '2016-06-06 17:07:59.986461' WHERE "people"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 16ms (Views: 1.4ms | ActiveRecord: 1.5ms)
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."actable_id" = ? AND "people"."actable_type" = ? LIMIT 1[0m  [["actable_id", 1], ["actable_type", "Deputy"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.3ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1583 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1787 LIMIT 1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1787 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDeputy Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" IS NULL LIMIT 1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.5ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (1.4ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3493 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Christop Orn IV"], ["registration", 3493], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Cindy Cronin"], ["email", "seth.gutkowski@coletoy.org"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:08:00.036171"], ["updated_at", "2016-06-06 17:08:00.036171"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3493 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3493 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1147 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1147 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1393 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1393 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.3ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1415 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1415 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.3ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1146 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1146 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1695 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1695 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1241 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1241 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (81.2ms)[0m  [1mDELETE FROM "achievements";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'achievements';[0m
+  [1m[35m (53.7ms)[0m  DELETE FROM "cabinets";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'cabinets';
+  [1m[36m (54.0ms)[0m  [1mDELETE FROM "deputies";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'deputies';[0m
+  [1m[35m (53.9ms)[0m  DELETE FROM "gamifications";
+  [1m[36m (0.5ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'gamifications';
+  [1m[36m (53.9ms)[0m  [1mDELETE FROM "parties";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'parties';[0m
+  [1m[35m (53.8ms)[0m  DELETE FROM "people";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'people';
+  [1m[36m (65.0ms)[0m  [1mDELETE FROM "quests";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'quests';[0m
+  [1m[35m (65.0ms)[0m  DELETE FROM "relationships";
+  [1m[36m (0.5ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'relationships';
+  [1m[36m (64.8ms)[0m  [1mDELETE FROM "ufs";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.2ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'ufs';[0m
+  [1m[35m (65.2ms)[0m  DELETE FROM "users";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by DeputiesController#new as HTML
+  Rendered text template (0.0ms)
+Completed 200 OK in 31ms (Views: 13.7ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1124 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)  [["deputy_name", "Vernie Turner I"], ["registration", 1124], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["actable_type", "Deputy"], ["name", "Jennie Wehner"], ["email", "karianne.ledner@sipes.com"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:09:07.638787"], ["updated_at", "2016-06-06 17:09:07.638787"], ["actable_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by DeputiesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDeputy Load (0.2ms)[0m  [1mSELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?[0m  [["id", 1]]
+  [1m[35mPerson Load (0.3ms)[0m  SELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)
+Completed 200 OK in 18ms (Views: 2.3ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.3ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1120 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Arnulfo Larkin I"], ["registration", 1120], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Zachery Muller"], ["email", "scarlett@carter.io"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:09:07.674509"], ["updated_at", "2016-06-06 17:09:07.674509"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DeputiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "deputies"
+Processing by DeputiesController#create as HTML
+  Parameters: {"deputy"=>{"name"=>"Gwendolyn Gutmann II", "deputy_name"=>"Nicolette Sporer", "email"=>"bud.smitham@welch.info", "registration"=>"1463", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+Unpermitted parameter: followers_count
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1463 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Nicolette Sporer"], ["registration", 1463], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Gwendolyn Gutmann II"], ["email", "bud.smitham@welch.info"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:09:07.704611"], ["updated_at", "2016-06-06 17:09:07.704611"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 11ms (Views: 1.2ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "deputies"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+Processing by DeputiesController#create as HTML
+  Parameters: {"deputy"=>{"name"=>"Ken Monahan", "deputy_name"=>nil, "email"=>"obie@jacobs.biz", "registration"=>"1103", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+Unpermitted parameter: followers_count
+  [1m[35m (0.5ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1103 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered text template (0.0ms)
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 0.8ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1469 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)  [["deputy_name", "Thora Weimann"], ["registration", 1469], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["actable_type", "Deputy"], ["name", "Isabel Turcotte DVM"], ["email", "brooklyn.nitzsche@pacocha.net"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:09:07.738740"], ["updated_at", "2016-06-06 17:09:07.738740"], ["actable_id", 1]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+Processing by DeputiesController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mPerson Load (0.4ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 1]]
+  [1m[35mDeputy Load (0.3ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mRelationship Load (0.2ms)[0m  [1mSELECT "relationships".* FROM "relationships" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 1]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/deputies/all
+Completed 302 Found in 26ms (ActiveRecord: 2.1ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "deputies"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1180 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Nome"], ["registration", 1180], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Elliot Torp"], ["email", "cathryn@herzog.org"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:09:07.781701"], ["updated_at", "2016-06-06 17:09:07.781701"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DeputiesController#update as HTML
+  Parameters: {"id"=>"1", "deputy"=>{"name"=>"Mudando", "deputy_name"=>"Lance Steuber", "email"=>"loyce@conn.net", "registration"=>"1217", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+  [1m[35mDeputy Load (0.3ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  ORDER BY "deputies"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.6ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+Unpermitted parameter: followers_count
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE ("deputies"."registration" = 1217 AND "deputies"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "deputies" SET "deputy_name" = ?, "registration" = ? WHERE "deputies"."id" = ?  [["deputy_name", "Lance Steuber"], ["registration", 1217], ["id", 1]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "people" SET "name" = ?, "email" = ?, "updated_at" = ? WHERE "people"."id" = ?[0m  [["name", "Mudando"], ["email", "loyce@conn.net"], ["updated_at", "2016-06-06 17:09:07.802347"], ["id", 1]]
+  [1m[35mSQL (0.2ms)[0m  UPDATE "people" SET "updated_at" = '2016-06-06 17:09:07.804419' WHERE "people"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 18ms (Views: 1.2ms | ActiveRecord: 2.2ms)
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."actable_id" = ? AND "people"."actable_type" = ? LIMIT 1[0m  [["actable_id", 1], ["actable_type", "Deputy"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1441 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDeputy Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1391 LIMIT 1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1391 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDeputy Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" IS NULL LIMIT 1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.9ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3744 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Kevin Johnson"], ["registration", 3744], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Marques Durgan"], ["email", "rolando@schillerlueilwitz.biz"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:09:07.851180"], ["updated_at", "2016-06-06 17:09:07.851180"], ["actable_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.3ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3744 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3744 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1418 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1418 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1119 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1119 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1883 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1883 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1703 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1703 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1717 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1717 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1637 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1637 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (102.5ms)[0m  [1mDELETE FROM "achievements";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.2ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'achievements';[0m
+  [1m[35m (65.6ms)[0m  DELETE FROM "cabinets";
+  [1m[36m (0.5ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'cabinets';
+  [1m[36m (64.8ms)[0m  [1mDELETE FROM "deputies";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'deputies';[0m
+  [1m[35m (65.1ms)[0m  DELETE FROM "gamifications";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'gamifications';
+  [1m[36m (64.9ms)[0m  [1mDELETE FROM "parties";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'parties';[0m
+  [1m[35m (64.9ms)[0m  DELETE FROM "people";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'people';
+  [1m[36m (64.8ms)[0m  [1mDELETE FROM "quests";[0m
+  [1m[35m (0.5ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'quests';[0m
+  [1m[35m (64.9ms)[0m  DELETE FROM "relationships";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'relationships';
+  [1m[36m (65.0ms)[0m  [1mDELETE FROM "ufs";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'ufs';[0m
+  [1m[35m (65.1ms)[0m  DELETE FROM "users";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.4ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by DeputiesController#new as HTML
+  Rendered text template (0.1ms)
+Completed 200 OK in 33ms (Views: 13.5ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1105 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)  [["deputy_name", "Mrs. Donavon Pacocha"], ["registration", 1105], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["actable_type", "Deputy"], ["name", "Johnathon McLaughlin"], ["email", "deshawn@weinatreynolds.io"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:11:42.477578"], ["updated_at", "2016-06-06 17:11:42.477578"], ["actable_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by DeputiesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDeputy Load (0.2ms)[0m  [1mSELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?[0m  [["id", 1]]
+  [1m[35mPerson Load (0.3ms)[0m  SELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)
+Completed 200 OK in 18ms (Views: 2.2ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1586 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Will Haag"], ["registration", 1586], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Marcellus Wilkinson"], ["email", "kasey_cummerata@kirlinturner.info"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:11:42.513232"], ["updated_at", "2016-06-06 17:11:42.513232"], ["actable_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DeputiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mPerson Load (0.4ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "deputies"
+Processing by DeputiesController#create as HTML
+  Parameters: {"deputy"=>{"name"=>"Raphaelle Goodwin Sr.", "deputy_name"=>"Maia Robel MD", "email"=>"meda@feest.biz", "registration"=>"1821", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+Unpermitted parameter: followers_count
+  [1m[36m (0.6ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1821 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Maia Robel MD"], ["registration", 1821], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Raphaelle Goodwin Sr."], ["email", "meda@feest.biz"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:11:42.544402"], ["updated_at", "2016-06-06 17:11:42.544402"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 12ms (Views: 1.1ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "deputies"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+Processing by DeputiesController#create as HTML
+  Parameters: {"deputy"=>{"name"=>"Jonathon Connelly", "deputy_name"=>nil, "email"=>"halle.gerhold@kuphal.co", "registration"=>"1093", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+Unpermitted parameter: followers_count
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1093 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered text template (0.0ms)
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1097 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)  [["deputy_name", "Dewitt Donnelly"], ["registration", 1097], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["actable_type", "Deputy"], ["name", "Anita Feil"], ["email", "gloria@hayes.co"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:11:42.579465"], ["updated_at", "2016-06-06 17:11:42.579465"], ["actable_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+Processing by DeputiesController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 1]]
+  [1m[35mDeputy Load (0.2ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mRelationship Load (0.2ms)[0m  [1mSELECT "relationships".* FROM "relationships" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 1]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/deputies/all
+Completed 302 Found in 26ms (ActiveRecord: 1.8ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "deputies"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1608 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Nome"], ["registration", 1608], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Darlene Cronin"], ["email", "boyd@hicklejerde.name"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:11:42.621584"], ["updated_at", "2016-06-06 17:11:42.621584"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DeputiesController#update as HTML
+  Parameters: {"id"=>"1", "deputy"=>{"name"=>"Mudando", "deputy_name"=>"Wilfred Nitzsche", "email"=>"herminio_brekke@cummerata.co", "registration"=>"1354", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+  [1m[35mDeputy Load (0.3ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  ORDER BY "deputies"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+Unpermitted parameter: followers_count
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE ("deputies"."registration" = 1354 AND "deputies"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "deputies" SET "deputy_name" = ?, "registration" = ? WHERE "deputies"."id" = ?  [["deputy_name", "Wilfred Nitzsche"], ["registration", 1354], ["id", 1]]
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "people" SET "name" = ?, "email" = ?, "updated_at" = ? WHERE "people"."id" = ?[0m  [["name", "Mudando"], ["email", "herminio_brekke@cummerata.co"], ["updated_at", "2016-06-06 17:11:42.641968"], ["id", 1]]
+  [1m[35mSQL (0.2ms)[0m  UPDATE "people" SET "updated_at" = '2016-06-06 17:11:42.644293' WHERE "people"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 17ms (Views: 1.1ms | ActiveRecord: 1.6ms)
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."actable_id" = ? AND "people"."actable_type" = ? LIMIT 1[0m  [["actable_id", 1], ["actable_type", "Deputy"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1473 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDeputy Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1811 LIMIT 1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1811 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDeputy Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" IS NULL LIMIT 1[0m
+  [1m[35mDeputy Exists (0.3ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3534 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Mackenzie Quigley"], ["registration", 3534], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Destinee Berge"], ["email", "stephanie@handbergnaum.co"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:11:42.689252"], ["updated_at", "2016-06-06 17:11:42.689252"], ["actable_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.8ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3534 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3534 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1755 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1755 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1336 LIMIT 1
+  [1m[36mDeputy Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1336 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1855 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1855 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1470 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1470 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1972 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1972 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1827 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1827 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (82.5ms)[0m  [1mDELETE FROM "achievements";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'achievements';[0m
+  [1m[35m (62.5ms)[0m  DELETE FROM "cabinets";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'cabinets';
+  [1m[36m (65.0ms)[0m  [1mDELETE FROM "deputies";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'deputies';[0m
+  [1m[35m (64.9ms)[0m  DELETE FROM "gamifications";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'gamifications';
+  [1m[36m (64.8ms)[0m  [1mDELETE FROM "parties";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.2ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'parties';[0m
+  [1m[35m (65.2ms)[0m  DELETE FROM "people";
+  [1m[36m (0.5ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'people';
+  [1m[36m (64.8ms)[0m  [1mDELETE FROM "quests";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'quests';[0m
+  [1m[35m (65.2ms)[0m  DELETE FROM "relationships";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'relationships';
+  [1m[36m (64.8ms)[0m  [1mDELETE FROM "ufs";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'ufs';[0m
+  [1m[35m (65.0ms)[0m  DELETE FROM "users";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.4ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by DeputiesController#new as HTML
+  Rendered text template (0.0ms)
+Completed 200 OK in 36ms (Views: 13.7ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1992 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)  [["deputy_name", "Mrs. Arno Konopelski"], ["registration", 1992], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["actable_type", "Deputy"], ["name", "Evelyn Nicolas"], ["email", "margarita@stanton.info"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:15:50.801125"], ["updated_at", "2016-06-06 17:15:50.801125"], ["actable_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by DeputiesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDeputy Load (0.2ms)[0m  [1mSELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?[0m  [["id", 1]]
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)
+Completed 200 OK in 16ms (Views: 2.1ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1912 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Reymundo Dare"], ["registration", 1912], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Celestine Borer"], ["email", "cleora.maggio@shields.co"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:15:50.833979"], ["updated_at", "2016-06-06 17:15:50.833979"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DeputiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "deputies"
+Processing by DeputiesController#create as HTML
+  Parameters: {"deputy"=>{"name"=>"Miss Francis Altenwerth", "deputy_name"=>"Camilla Jacobi V", "email"=>"sophia_rohan@bailey.name", "registration"=>"1371", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+Unpermitted parameter: followers_count
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1371 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Camilla Jacobi V"], ["registration", 1371], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Miss Francis Altenwerth"], ["email", "sophia_rohan@bailey.name"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:15:50.861578"], ["updated_at", "2016-06-06 17:15:50.861578"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 11ms (Views: 1.1ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "deputies"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+Processing by DeputiesController#create as HTML
+  Parameters: {"deputy"=>{"name"=>"Alberto Bins", "deputy_name"=>nil, "email"=>"garfield@leannon.net", "registration"=>"1762", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+Unpermitted parameter: followers_count
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1762 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered text template (0.0ms)
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1321 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)  [["deputy_name", "Barbara Rogahn"], ["registration", 1321], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["actable_type", "Deputy"], ["name", "Tyrel Pagac"], ["email", "obie@hyatt.info"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:15:50.893237"], ["updated_at", "2016-06-06 17:15:50.893237"], ["actable_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+Processing by DeputiesController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 1]]
+  [1m[35mDeputy Load (0.2ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mRelationship Load (0.2ms)[0m  [1mSELECT "relationships".* FROM "relationships" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 1]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/deputies/all
+Completed 302 Found in 22ms (ActiveRecord: 1.6ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "deputies"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1806 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Nome"], ["registration", 1806], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Jackson Bradtke"], ["email", "makenzie_king@mckenzieflatley.org"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:15:50.931190"], ["updated_at", "2016-06-06 17:15:50.931190"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DeputiesController#update as HTML
+  Parameters: {"id"=>"1", "deputy"=>{"name"=>"Mudando", "deputy_name"=>"Ms. Janet Deckow", "email"=>"vesta@white.info", "registration"=>"1819", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+  [1m[35mDeputy Load (0.2ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  ORDER BY "deputies"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+Unpermitted parameter: followers_count
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE ("deputies"."registration" = 1819 AND "deputies"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "deputies" SET "deputy_name" = ?, "registration" = ? WHERE "deputies"."id" = ?  [["deputy_name", "Ms. Janet Deckow"], ["registration", 1819], ["id", 1]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "people" SET "name" = ?, "email" = ?, "updated_at" = ? WHERE "people"."id" = ?[0m  [["name", "Mudando"], ["email", "vesta@white.info"], ["updated_at", "2016-06-06 17:15:50.949573"], ["id", 1]]
+  [1m[35mSQL (0.2ms)[0m  UPDATE "people" SET "updated_at" = '2016-06-06 17:15:50.951777' WHERE "people"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 16ms (Views: 1.4ms | ActiveRecord: 1.5ms)
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."actable_id" = ? AND "people"."actable_type" = ? LIMIT 1[0m  [["actable_id", 1], ["actable_type", "Deputy"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1603 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1741 LIMIT 1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1741 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" IS NULL LIMIT 1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3734 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Zakary Strosin"], ["registration", 3734], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Ms. Bernhard Moore"], ["email", "brad.hamill@reichertrodriguez.biz"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:15:50.994374"], ["updated_at", "2016-06-06 17:15:50.994374"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3734 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3734 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1251 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1251 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1782 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1782 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1281 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1281 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1390 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1390 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1465 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1465 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1452 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1452 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (75.7ms)[0m  [1mDELETE FROM "achievements";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'achievements';[0m
+  [1m[35m (65.7ms)[0m  DELETE FROM "cabinets";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'cabinets';
+  [1m[36m (65.0ms)[0m  [1mDELETE FROM "deputies";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'deputies';[0m
+  [1m[35m (87.7ms)[0m  DELETE FROM "gamifications";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'gamifications';
+  [1m[36m (87.9ms)[0m  [1mDELETE FROM "parties";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.2ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'parties';[0m
+  [1m[35m (87.2ms)[0m  DELETE FROM "people";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'people';
+  [1m[36m (87.0ms)[0m  [1mDELETE FROM "quests";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'quests';[0m
+  [1m[35m (87.1ms)[0m  DELETE FROM "relationships";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'relationships';
+  [1m[36m (76.0ms)[0m  [1mDELETE FROM "ufs";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'ufs';[0m
+  [1m[35m (76.0ms)[0m  DELETE FROM "users";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by DeputiesController#new as HTML
+  Rendered text template (0.0ms)
+Completed 200 OK in 32ms (Views: 12.9ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1596 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)  [["deputy_name", "Myriam Fisher"], ["registration", 1596], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["actable_type", "Deputy"], ["name", "Randi Schuster II"], ["email", "mitchell@hicklewisoky.info"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:19:12.594635"], ["updated_at", "2016-06-06 17:19:12.594635"], ["actable_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by DeputiesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDeputy Load (0.2ms)[0m  [1mSELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?[0m  [["id", 1]]
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)
+Completed 200 OK in 16ms (Views: 2.2ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1575 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Mrs. Francesco Nitzsche"], ["registration", 1575], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Donato Cronin"], ["email", "godfrey@hermann.io"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:19:12.627933"], ["updated_at", "2016-06-06 17:19:12.627933"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DeputiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "deputies"
+Processing by DeputiesController#create as HTML
+  Parameters: {"deputy"=>{"name"=>"Marilie Hansen", "deputy_name"=>"Nina Kulas", "email"=>"ernest@olson.io", "registration"=>"1623", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+Unpermitted parameter: followers_count
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.1ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1623 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Nina Kulas"], ["registration", 1623], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Marilie Hansen"], ["email", "ernest@olson.io"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:19:12.657386"], ["updated_at", "2016-06-06 17:19:12.657386"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 12ms (Views: 1.1ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "deputies"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+Processing by DeputiesController#create as HTML
+  Parameters: {"deputy"=>{"name"=>"Cassandre Von", "deputy_name"=>nil, "email"=>"santina@keeling.info", "registration"=>"1126", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+Unpermitted parameter: followers_count
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1126 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered text template (0.0ms)
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1719 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)  [["deputy_name", "Lenny Mraz"], ["registration", 1719], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["actable_type", "Deputy"], ["name", "Yolanda Rau"], ["email", "adan.grady@hauck.com"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:19:12.690363"], ["updated_at", "2016-06-06 17:19:12.690363"], ["actable_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+Processing by DeputiesController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 1]]
+  [1m[35mDeputy Load (0.2ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mRelationship Load (0.2ms)[0m  [1mSELECT "relationships".* FROM "relationships" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 1]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/deputies/all
+Completed 302 Found in 24ms (ActiveRecord: 1.8ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "deputies"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1453 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Nome"], ["registration", 1453], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Lesley Wiza"], ["email", "max@ondricka.co"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:19:12.730373"], ["updated_at", "2016-06-06 17:19:12.730373"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DeputiesController#update as HTML
+  Parameters: {"id"=>"1", "deputy"=>{"name"=>"Mudando", "deputy_name"=>"Effie Olson DDS", "email"=>"felicia.champlin@weimanncollier.co", "registration"=>"1373", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+  [1m[35mDeputy Load (0.2ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  ORDER BY "deputies"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+Unpermitted parameter: followers_count
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE ("deputies"."registration" = 1373 AND "deputies"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "deputies" SET "deputy_name" = ?, "registration" = ? WHERE "deputies"."id" = ?  [["deputy_name", "Effie Olson DDS"], ["registration", 1373], ["id", 1]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "people" SET "name" = ?, "email" = ?, "updated_at" = ? WHERE "people"."id" = ?[0m  [["name", "Mudando"], ["email", "felicia.champlin@weimanncollier.co"], ["updated_at", "2016-06-06 17:19:12.750422"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "people" SET "updated_at" = '2016-06-06 17:19:12.752665' WHERE "people"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 17ms (Views: 1.2ms | ActiveRecord: 1.7ms)
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."actable_id" = ? AND "people"."actable_type" = ? LIMIT 1[0m  [["actable_id", 1], ["actable_type", "Deputy"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1202 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1531 LIMIT 1[0m
+  [1m[35mDeputy Exists (0.1ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1531 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" IS NULL LIMIT 1[0m
+  [1m[35mDeputy Exists (0.1ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3657 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Nicolas Eichmann"], ["registration", 3657], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Norris Homenick III"], ["email", "maryam_bailey@dooley.info"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:19:12.794363"], ["updated_at", "2016-06-06 17:19:12.794363"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3657 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3657 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1455 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1455 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1708 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1708 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1573 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1573 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1867 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1867 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1819 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1819 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1608 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1608 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."nickname" = 'Pedro Schumm' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."nickname" IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."nickname" = 'Melissa Crooks' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("nickname", "password_digest") VALUES (?, ?)  [["nickname", "Melissa Crooks"], ["password_digest", "$2a$04$HszXpoyaOIZG6Kh5xQh7AubsgSUrFMd96Z2y90a9LcnmOcQohSzaO"]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "people" ("actable_type", "email", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?)[0m  [["actable_type", "User"], ["email", "antonetta@wilkinson.co"], ["created_at", "2016-06-06 17:19:12.964693"], ["updated_at", "2016-06-06 17:19:12.964693"], ["actable_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1643 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Noe Schaden"], ["registration", 1643], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Nils Kihn"], ["email", "mervin.bartoletti@gutkowski.net"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:19:12.975565"], ["updated_at", "2016-06-06 17:19:12.975565"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.3ms)[0m  SELECT  1 AS one FROM "deputies" LEFT OUTER JOIN "people" ON "people"."actable_id" = "deputies"."id" AND "people"."actable_type" = ? INNER JOIN "relationships" ON "deputies"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "deputies"."id" = ? LIMIT 1  [["actable_type", "Deputy"], ["follower_id", 1], ["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "relationships" ("followed_id", "follower_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["followed_id", 1], ["follower_id", 1], ["created_at", "2016-06-06 17:19:12.995936"], ["updated_at", "2016-06-06 17:19:12.995936"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE ("deputies"."registration" = 1643 AND "deputies"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "deputies" SET "followers_count" = ? WHERE "deputies"."id" = ?  [["followers_count", 3], ["id", 1]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "people" SET "updated_at" = '2016-06-06 17:19:13.001568' WHERE "people"."id" = ?[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" LEFT OUTER JOIN "people" ON "people"."actable_id" = "deputies"."id" AND "people"."actable_type" = ? INNER JOIN "relationships" ON "deputies"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "deputies"."id" = ? LIMIT 1[0m  [["actable_type", "Deputy"], ["follower_id", 1], ["id", 1]]
+  [1m[35mDeputy Exists (0.1ms)[0m  SELECT  1 AS one FROM "deputies" LEFT OUTER JOIN "people" ON "people"."actable_id" = "deputies"."id" AND "people"."actable_type" = ? INNER JOIN "relationships" ON "deputies"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "deputies"."id" = ? LIMIT 1  [["actable_type", "Deputy"], ["follower_id", 1], ["id", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" LEFT OUTER JOIN "people" ON "people"."actable_id" = "users"."id" AND "people"."actable_type" = ? INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["actable_type", "User"], ["followed_id", 1], ["id", 1]]
+  [1m[35mRelationship Load (0.2ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."followed_id" = ? LIMIT 1  [["follower_id", 1], ["followed_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "relationships" WHERE "relationships"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE ("deputies"."registration" = 1643 AND "deputies"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "deputies" SET "followers_count" = ? WHERE "deputies"."id" = ?  [["followers_count", 2], ["id", 1]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "people" SET "updated_at" = '2016-06-06 17:19:13.018586' WHERE "people"."id" = ?[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" LEFT OUTER JOIN "people" ON "people"."actable_id" = "deputies"."id" AND "people"."actable_type" = ? INNER JOIN "relationships" ON "deputies"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "deputies"."id" = ? LIMIT 1[0m  [["actable_type", "Deputy"], ["follower_id", 1], ["id", 1]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (87.4ms)[0m  [1mDELETE FROM "achievements";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'achievements';[0m
+  [1m[35m (54.6ms)[0m  DELETE FROM "cabinets";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'cabinets';
+  [1m[36m (65.0ms)[0m  [1mDELETE FROM "deputies";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'deputies';[0m
+  [1m[35m (64.8ms)[0m  DELETE FROM "gamifications";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'gamifications';
+  [1m[36m (65.0ms)[0m  [1mDELETE FROM "parties";[0m
+  [1m[35m (0.5ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'parties';[0m
+  [1m[35m (76.1ms)[0m  DELETE FROM "people";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'people';
+  [1m[36m (76.0ms)[0m  [1mDELETE FROM "quests";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'quests';[0m
+  [1m[35m (87.1ms)[0m  DELETE FROM "relationships";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'relationships';
+  [1m[36m (76.0ms)[0m  [1mDELETE FROM "ufs";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'ufs';[0m
+  [1m[35m (76.0ms)[0m  DELETE FROM "users";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by DeputiesController#new as HTML
+  Rendered text template (0.1ms)
+Completed 200 OK in 33ms (Views: 13.7ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1362 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)  [["deputy_name", "Cassandra Haag"], ["registration", 1362], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["actable_type", "Deputy"], ["name", "Felix Morar"], ["email", "clementine_douglas@gislasonmarvin.io"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:20:00.646804"], ["updated_at", "2016-06-06 17:20:00.646804"], ["actable_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by DeputiesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDeputy Load (0.3ms)[0m  [1mSELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?[0m  [["id", 1]]
+  [1m[35mPerson Load (0.5ms)[0m  SELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)
+Completed 200 OK in 18ms (Views: 2.3ms | ActiveRecord: 0.7ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1367 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Eryn Sanford"], ["registration", 1367], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Evert Bernhard II"], ["email", "zora_lind@smithamcollier.biz"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:20:00.682154"], ["updated_at", "2016-06-06 17:20:00.682154"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DeputiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "deputies"
+Processing by DeputiesController#create as HTML
+  Parameters: {"deputy"=>{"name"=>"Beth Stoltenberg", "deputy_name"=>"Ms. Delfina Adams", "email"=>"emelia_reynolds@bahringer.biz", "registration"=>"1274", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+Unpermitted parameter: followers_count
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.4ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1274 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Ms. Delfina Adams"], ["registration", 1274], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Beth Stoltenberg"], ["email", "emelia_reynolds@bahringer.biz"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:20:00.713181"], ["updated_at", "2016-06-06 17:20:00.713181"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 12ms (Views: 1.1ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "deputies"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+Processing by DeputiesController#create as HTML
+  Parameters: {"deputy"=>{"name"=>"Heather Green Sr.", "deputy_name"=>nil, "email"=>"gia@heathcote.io", "registration"=>"1492", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+Unpermitted parameter: followers_count
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1492 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered text template (0.0ms)
+Completed 200 OK in 10ms (Views: 0.6ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1651 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)  [["deputy_name", "Agnes Hettinger"], ["registration", 1651], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["actable_type", "Deputy"], ["name", "Muhammad Kessler"], ["email", "fanny@wittinggibson.org"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:20:00.748652"], ["updated_at", "2016-06-06 17:20:00.748652"], ["actable_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+Processing by DeputiesController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 1]]
+  [1m[35mDeputy Load (0.3ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mRelationship Load (0.2ms)[0m  [1mSELECT "relationships".* FROM "relationships" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 1]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/deputies/all
+Completed 302 Found in 27ms (ActiveRecord: 2.2ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "deputies"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1930 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Nome"], ["registration", 1930], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Keeley Koepp"], ["email", "sarai@mcdermott.name"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:20:00.792703"], ["updated_at", "2016-06-06 17:20:00.792703"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DeputiesController#update as HTML
+  Parameters: {"id"=>"1", "deputy"=>{"name"=>"Mudando", "deputy_name"=>"Trevion Kub", "email"=>"jayson.sawayn@jakubowski.org", "registration"=>"1553", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+  [1m[35mDeputy Load (0.3ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  ORDER BY "deputies"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+Unpermitted parameter: followers_count
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE ("deputies"."registration" = 1553 AND "deputies"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "deputies" SET "deputy_name" = ?, "registration" = ? WHERE "deputies"."id" = ?  [["deputy_name", "Trevion Kub"], ["registration", 1553], ["id", 1]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "people" SET "name" = ?, "email" = ?, "updated_at" = ? WHERE "people"."id" = ?[0m  [["name", "Mudando"], ["email", "jayson.sawayn@jakubowski.org"], ["updated_at", "2016-06-06 17:20:00.814990"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "people" SET "updated_at" = '2016-06-06 17:20:00.817009' WHERE "people"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 16ms (Views: 1.4ms | ActiveRecord: 1.4ms)
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."actable_id" = ? AND "people"."actable_type" = ? LIMIT 1[0m  [["actable_id", 1], ["actable_type", "Deputy"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.3ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1937 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1191 LIMIT 1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1191 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDeputy Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" IS NULL LIMIT 1[0m
+  [1m[35mDeputy Exists (0.3ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.3ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3511 LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Jakayla Heller V"], ["registration", 3511], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Kellen Balistreri MD"], ["email", "destin@thompson.info"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:20:00.864808"], ["updated_at", "2016-06-06 17:20:00.864808"], ["actable_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3511 LIMIT 1
+  [1m[36mDeputy Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3511 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1891 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1891 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1506 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1506 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1045 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1045 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1339 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1339 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1768 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1768 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1513 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1513 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."nickname" = 'Ressie Predovic' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."nickname" IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."nickname" = 'Kaelyn Steuber MD' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("nickname", "password_digest") VALUES (?, ?)  [["nickname", "Kaelyn Steuber MD"], ["password_digest", "$2a$04$Ezdi/WFoC8Q.0SdqjVhj1.rFUI9rVUIeMe0h7.Tn26jl2eZviyuxu"]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "people" ("actable_type", "email", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?)[0m  [["actable_type", "User"], ["email", "donnie@schamberger.org"], ["created_at", "2016-06-06 17:20:01.028768"], ["updated_at", "2016-06-06 17:20:01.028768"], ["actable_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.1ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1360 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Breanne Corkery"], ["registration", 1360], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Baby Morissette"], ["email", "teresa.wolff@harveycole.org"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:20:01.037827"], ["updated_at", "2016-06-06 17:20:01.037827"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.3ms)[0m  SELECT  1 AS one FROM "deputies" LEFT OUTER JOIN "people" ON "people"."actable_id" = "deputies"."id" AND "people"."actable_type" = ? INNER JOIN "relationships" ON "deputies"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "deputies"."id" = ? LIMIT 1  [["actable_type", "Deputy"], ["follower_id", 1], ["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "relationships" ("followed_id", "follower_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["followed_id", 1], ["follower_id", 1], ["created_at", "2016-06-06 17:20:01.058021"], ["updated_at", "2016-06-06 17:20:01.058021"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE ("deputies"."registration" = 1360 AND "deputies"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "deputies" SET "followers_count" = ? WHERE "deputies"."id" = ?  [["followers_count", 3], ["id", 1]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "people" SET "updated_at" = '2016-06-06 17:20:01.063575' WHERE "people"."id" = ?[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" LEFT OUTER JOIN "people" ON "people"."actable_id" = "deputies"."id" AND "people"."actable_type" = ? INNER JOIN "relationships" ON "deputies"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "deputies"."id" = ? LIMIT 1[0m  [["actable_type", "Deputy"], ["follower_id", 1], ["id", 1]]
+  [1m[35mDeputy Exists (0.1ms)[0m  SELECT  1 AS one FROM "deputies" LEFT OUTER JOIN "people" ON "people"."actable_id" = "deputies"."id" AND "people"."actable_type" = ? INNER JOIN "relationships" ON "deputies"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "deputies"."id" = ? LIMIT 1  [["actable_type", "Deputy"], ["follower_id", 1], ["id", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" LEFT OUTER JOIN "people" ON "people"."actable_id" = "users"."id" AND "people"."actable_type" = ? INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["actable_type", "User"], ["followed_id", 1], ["id", 1]]
+  [1m[35mRelationship Load (0.3ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."followed_id" = ? LIMIT 1  [["follower_id", 1], ["followed_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "relationships" WHERE "relationships"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE ("deputies"."registration" = 1360 AND "deputies"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "deputies" SET "followers_count" = ? WHERE "deputies"."id" = ?  [["followers_count", 2], ["id", 1]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "people" SET "updated_at" = '2016-06-06 17:20:01.082509' WHERE "people"."id" = ?[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" LEFT OUTER JOIN "people" ON "people"."actable_id" = "deputies"."id" AND "people"."actable_type" = ? INNER JOIN "relationships" ON "deputies"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "deputies"."id" = ? LIMIT 1[0m  [["actable_type", "Deputy"], ["follower_id", 1], ["id", 1]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (92.6ms)[0m  [1mDELETE FROM "achievements";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.2ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'achievements';[0m
+  [1m[35m (64.6ms)[0m  DELETE FROM "cabinets";
+  [1m[36m (0.3ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  DELETE FROM sqlite_sequence where name = 'cabinets';
+  [1m[36m (76.5ms)[0m  [1mDELETE FROM "deputies";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.2ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'deputies';[0m
+  [1m[35m (76.3ms)[0m  DELETE FROM "gamifications";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'gamifications';
+  [1m[36m (76.0ms)[0m  [1mDELETE FROM "parties";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.2ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'parties';[0m
+  [1m[35m (71.8ms)[0m  DELETE FROM "people";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'people';
+  [1m[36m (76.0ms)[0m  [1mDELETE FROM "quests";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'quests';[0m
+  [1m[35m (87.1ms)[0m  DELETE FROM "relationships";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'relationships';
+  [1m[36m (69.4ms)[0m  [1mDELETE FROM "ufs";[0m
+  [1m[35m (0.5ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.3ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'ufs';[0m
+  [1m[35m (86.9ms)[0m  DELETE FROM "users";
+  [1m[36m (0.4ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by DeputiesController#new as HTML
+  Rendered text template (0.0ms)
+Completed 200 OK in 30ms (Views: 12.8ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1109 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)  [["deputy_name", "Damian Schaden"], ["registration", 1109], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["actable_type", "Deputy"], ["name", "Dr. Elton Gulgowski"], ["email", "may_vonrueden@blockjakubowski.com"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:20:23.881463"], ["updated_at", "2016-06-06 17:20:23.881463"], ["actable_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by DeputiesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDeputy Load (0.3ms)[0m  [1mSELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?[0m  [["id", 1]]
+  [1m[35mPerson Load (0.3ms)[0m  SELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)
+Completed 200 OK in 18ms (Views: 2.3ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1029 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Eden Howe"], ["registration", 1029], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Meggie Kertzmann"], ["email", "lenora.rosenbaum@barrows.info"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:20:23.917205"], ["updated_at", "2016-06-06 17:20:23.917205"], ["actable_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DeputiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "deputies"
+Processing by DeputiesController#create as HTML
+  Parameters: {"deputy"=>{"name"=>"Mrs. Rodrick Corwin", "deputy_name"=>"Miss Annette Beatty", "email"=>"dale.rath@hackett.co", "registration"=>"1365", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+Unpermitted parameter: followers_count
+  [1m[36m (0.6ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1365 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Miss Annette Beatty"], ["registration", 1365], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Mrs. Rodrick Corwin"], ["email", "dale.rath@hackett.co"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:20:23.949158"], ["updated_at", "2016-06-06 17:20:23.949158"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 11ms (Views: 1.2ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "deputies"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+Processing by DeputiesController#create as HTML
+  Parameters: {"deputy"=>{"name"=>"Oswaldo Hackett", "deputy_name"=>nil, "email"=>"shannon@jones.biz", "registration"=>"1801", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+Unpermitted parameter: followers_count
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1801 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered text template (0.0ms)
+Completed 200 OK in 10ms (Views: 0.9ms | ActiveRecord: 0.7ms)
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1156 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)  [["deputy_name", "Roy Ritchie II"], ["registration", 1156], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["actable_type", "Deputy"], ["name", "Eliezer Abshire"], ["email", "amparo@padberg.info"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:20:23.985965"], ["updated_at", "2016-06-06 17:20:23.985965"], ["actable_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "deputies"[0m
+Processing by DeputiesController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 1]]
+  [1m[35mDeputy Load (0.3ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.4ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36mRelationship Load (0.5ms)[0m  [1mSELECT "relationships".* FROM "relationships" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 1]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "deputies" WHERE "deputies"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/deputies/all
+Completed 302 Found in 29ms (ActiveRecord: 2.8ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "deputies"
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1227 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Nome"], ["registration", 1227], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Delia Schaden V"], ["email", "maybelle.ondricka@gislason.co"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:20:24.031395"], ["updated_at", "2016-06-06 17:20:24.031395"], ["actable_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by DeputiesController#update as HTML
+  Parameters: {"id"=>"1", "deputy"=>{"name"=>"Mudando", "deputy_name"=>"Marlon Koelpin IV", "email"=>"august@ruecker.org", "registration"=>"1932", "legislation_situation"=>"Titular", "gender"=>"MASCULINO", "image_path"=>"qualquer", "uf_id"=>"1", "party_id"=>"2", "followers_count"=>"2"}}
+  [1m[35mDeputy Load (0.2ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ?  ORDER BY "deputies"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."actable_type" = 'Deputy' AND "people"."actable_id" IN (1)[0m
+Unpermitted parameter: followers_count
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE ("deputies"."registration" = 1932 AND "deputies"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "deputies" SET "deputy_name" = ?, "registration" = ? WHERE "deputies"."id" = ?  [["deputy_name", "Marlon Koelpin IV"], ["registration", 1932], ["id", 1]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "people" SET "name" = ?, "email" = ?, "updated_at" = ? WHERE "people"."id" = ?[0m  [["name", "Mudando"], ["email", "august@ruecker.org"], ["updated_at", "2016-06-06 17:20:24.053117"], ["id", 1]]
+  [1m[35mSQL (0.2ms)[0m  UPDATE "people" SET "updated_at" = '2016-06-06 17:20:24.055147' WHERE "people"."id" = ?  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 16ms (Views: 1.1ms | ActiveRecord: 1.5ms)
+  [1m[35mDeputy Load (0.1ms)[0m  SELECT  "deputies".* FROM "deputies" WHERE "deputies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."actable_id" = ? AND "people"."actable_type" = ? LIMIT 1[0m  [["actable_id", 1], ["actable_type", "Deputy"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.3ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1354 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1384 LIMIT 1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1384 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" IS NULL LIMIT 1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.6ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3231 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["deputy_name", "Ms. Donna Ondricka"], ["registration", 3231], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["actable_type", "Deputy"], ["name", "Faustino Rohan"], ["email", "rae@dickisenger.net"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:20:24.105061"], ["updated_at", "2016-06-06 17:20:24.105061"], ["actable_id", 1]]
+  [1m[36m (0.6ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.3ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3231 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 3231 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1506 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1506 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1344 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1344 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1420 LIMIT 1
+  [1m[36mDeputy Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1420 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1263 LIMIT 1
+  [1m[36mDeputy Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1263 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1656 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1656 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDeputy Exists (0.3ms)[0m  SELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1405 LIMIT 1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1405 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."nickname" = 'Nelson Hermann' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."nickname" IS NULL LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."nickname" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."nickname" = 'Mrs. Ahmed Hyatt' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("nickname", "password_digest") VALUES (?, ?)[0m  [["nickname", "Mrs. Ahmed Hyatt"], ["password_digest", "$2a$04$BaXKNRmb07o.nw8ekMK8PeAWUl80aKjBGbyfrt9A9UIA7I6f19GAG"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "people" ("actable_type", "email", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?)  [["actable_type", "User"], ["email", "dolores@leffler.co"], ["created_at", "2016-06-06 17:20:24.241574"], ["updated_at", "2016-06-06 17:20:24.241574"], ["actable_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" WHERE "deputies"."registration" = 1532 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "deputies" ("deputy_name", "registration", "legislation_situation", "image_path", "uf_id", "party_id", "followers_count") VALUES (?, ?, ?, ?, ?, ?, ?)  [["deputy_name", "Jacinthe Turner"], ["registration", 1532], ["legislation_situation", "Titular"], ["image_path", "qualquer"], ["uf_id", 1], ["party_id", 2], ["followers_count", 2]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "people" ("actable_type", "name", "email", "gender", "created_at", "updated_at", "actable_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["actable_type", "Deputy"], ["name", "Mrs. Treva Murazik"], ["email", "ima_heidenreich@price.com"], ["gender", "MASCULINO"], ["created_at", "2016-06-06 17:20:24.250254"], ["updated_at", "2016-06-06 17:20:24.250254"], ["actable_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mDeputy Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "deputies" LEFT OUTER JOIN "people" ON "people"."actable_id" = "deputies"."id" AND "people"."actable_type" = ? INNER JOIN "relationships" ON "deputies"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "deputies"."id" = ? LIMIT 1[0m  [["actable_type", "Deputy"], ["follower_id", 1], ["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "relationships" ("followed_id", "follower_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["followed_id", 1], ["follower_id", 1], ["created_at", "2016-06-06 17:20:24.271590"], ["updated_at", "2016-06-06 17:20:24.271590"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.2ms)[0m  SELECT  1 AS one FROM "deputies" WHERE ("deputies"."registration" = 1532 AND "deputies"."id" != 1) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "deputies" SET "followers_count" = ? WHERE "deputies"."id" = ?[0m  [["followers_count", 3], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "people" SET "updated_at" = '2016-06-06 17:20:24.277391' WHERE "people"."id" = ?  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.1ms)[0m  SELECT  1 AS one FROM "deputies" LEFT OUTER JOIN "people" ON "people"."actable_id" = "deputies"."id" AND "people"."actable_type" = ? INNER JOIN "relationships" ON "deputies"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "deputies"."id" = ? LIMIT 1  [["actable_type", "Deputy"], ["follower_id", 1], ["id", 1]]
+  [1m[36mDeputy Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "deputies" LEFT OUTER JOIN "people" ON "people"."actable_id" = "deputies"."id" AND "people"."actable_type" = ? INNER JOIN "relationships" ON "deputies"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "deputies"."id" = ? LIMIT 1[0m  [["actable_type", "Deputy"], ["follower_id", 1], ["id", 1]]
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" LEFT OUTER JOIN "people" ON "people"."actable_id" = "users"."id" AND "people"."actable_type" = ? INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ? AND "users"."id" = ? LIMIT 1  [["actable_type", "User"], ["followed_id", 1], ["id", 1]]
+  [1m[36mRelationship Load (0.2ms)[0m  [1mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = ? AND "relationships"."followed_id" = ? LIMIT 1[0m  [["follower_id", 1], ["followed_id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "relationships" WHERE "relationships"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.1ms)[0m  SELECT  1 AS one FROM "deputies" WHERE ("deputies"."registration" = 1532 AND "deputies"."id" != 1) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "deputies" SET "followers_count" = ? WHERE "deputies"."id" = ?[0m  [["followers_count", 2], ["id", 1]]
+  [1m[35mSQL (0.2ms)[0m  UPDATE "people" SET "updated_at" = '2016-06-06 17:20:24.294405' WHERE "people"."id" = ?  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mDeputy Exists (0.1ms)[0m  SELECT  1 AS one FROM "deputies" LEFT OUTER JOIN "people" ON "people"."actable_id" = "deputies"."id" AND "people"."actable_type" = ? INNER JOIN "relationships" ON "deputies"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "deputies"."id" = ? LIMIT 1  [["actable_type", "Deputy"], ["follower_id", 1], ["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m

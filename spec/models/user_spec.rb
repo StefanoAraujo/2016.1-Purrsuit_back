@@ -12,7 +12,7 @@ describe User do
 
 	it "is invalid without a nickname" do
 		user = build(:user, nickname: nil)
-		expect(user).to have(2).errors_on(:nickname)
+		expect(user).to have(1).errors_on(:nickname)
 		expect(user).to_not be_valid
 	end
 
