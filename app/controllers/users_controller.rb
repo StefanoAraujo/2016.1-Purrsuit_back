@@ -84,19 +84,21 @@ class UsersController < ApplicationController
   end
 
   def follow_deputy
-    deputy_id = params[:id]
-    user_id = params[:id]
+    deputy_id = params[:deputyId]
+    user_id = params[:userId]
     user = User.find_by(id: user_id)
     deputy = Deputy.find_by(id: deputy_id)
     user.follow(deputy)
+    render :nothing => true
   end
 
   def unfollow_deputy
-    deputy_id = params[:id]
-    user_id = params[:id]
+    deputy_id = params[:deputyId]
+    user_id = params[:userId]
     user = User.find_by(id: user_id)
     deputy = Deputy.find_by(id: deputy_id)
     user.unfollow(deputy)
+    render :nothing => true
   end
 
   def ionic_login
