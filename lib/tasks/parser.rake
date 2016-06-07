@@ -1,7 +1,13 @@
 namespace :parse do
 
   task deputies: :environment do
-    Deputy.parse_deputies
+    if Deputy.all.length < 1
+      Uf.populate_ufs
+      Party.parse_parties
+      Deputy.parse_deputies
+    else
+      puts "Base de deputados já populado!"
+    end
   end
 
   task parties: :environment do
