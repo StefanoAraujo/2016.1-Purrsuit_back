@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   def admin?
     self.role_admin
   end
-
+	
   def follow(deputy)
     active_relationships.create(followed_id: deputy.id)
     deputy.followers_count += 1

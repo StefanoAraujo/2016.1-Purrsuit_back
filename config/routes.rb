@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/all' => 'users#all', format: :json
+  get 'users/all' => 'users#all', format: :json, as: :users_all
   get 'users/new' => 'users#new'
   post 'users/create' => 'users#create', format: :json
   get 'users/:id' => 'users#show', format: :json
