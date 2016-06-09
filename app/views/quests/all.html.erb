@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
   <head>
     <%= stylesheet_link_tag "stylesheet.css" %>
@@ -28,9 +28,9 @@
 	            </div>
 	            <div class="panel-body">
 	              <%= q.description%>
-	              <div class="btn-toolbar button_group" role="group"> 
-	                <%= button_to "Edit", quests_edit_path(q), :method => :get, :id => "option-button", :class => "option_button btn btn-default btn-xs" %>
-	                <%= button_to "Delete", quests_delete_path(q), :method => :delete, :id => "option-button", :class => "option_button btn btn-default btn-xs" %>
+	              <div class="btn-toolbar button_group" role="group">
+	                <%= button_to "Edit", quests_edit_path(q), :method => :get, :id => "option-button", :class => "btn btn-default btn-xs" %>
+	                <%= button_to "Delete", quests_delete_path(q), :method => :delete, :id => "option-button", :class => "option_button btn btn-default btn-xs", data: { confirm: 'Você tem certeza que quer deletar esta quest?' } %>
 	              </div>
 	              </div>
 	            </div>
@@ -45,4 +45,3 @@
 		<a href="new" id="newThing" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
   </body>
 </html>
-

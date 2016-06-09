@@ -23,9 +23,9 @@
         <%= form_for :user, url: users_update_path, method: :put do | form | %>
           <%= form.text_field :nickname, :class => "gamification_fields", :placeholder => "User's nickname"%>
           <%= form.text_field :email, :class => "gamification_fields", :placeholder => "Email" %>
-          <%= form.submit "Edit Quest", :id => "gamification_button", :class => "gamification_button btn btn-default btn-lg"%>
+          <%= form.submit "Save", :id => "gamification_button", :class => "btn btn-default btn-xs"%>
         <% end %>
-        <%= button_to "Cancel", :users_all, :id => "gamification_button", :class => "btn btn-default btn-lg gamification_button", :method => :get %>
+        <%= button_to "Cancel", :users_all, :id => "gamification_button", :class => "btn btn-default btn-xs", :method => :get %>
       </div>
       <% else %>
         <script type="text/javascript">
@@ -35,5 +35,3 @@
     </div>
   </body>
 </html>
-	
-

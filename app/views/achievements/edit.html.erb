@@ -24,9 +24,9 @@
           <%= form.text_field :name, :class => "gamification_fields", :placeholder => "Achievement's name"%>
           <%= form.number_field :experience_points, :class => "gamification_fields", :placeholder => "Experience Points"%>
           <%= form.text_field :description, :class => "gamification_fields", :placeholder => "Description" %>
-          <%= form.submit "Edit Achievement", :id => "gamification_button", :class => "gamification_button btn btn-default btn-lg"%>
-        <% end %> 
-        <%= button_to "Cancel", :achievements_all, :id => "gamification_button", :class => "btn btn-default btn-lg gamification_button", :method => :get %>
+          <%= form.submit "Save", :id => "gamification_button", :class => "btn btn-default btn-xs"%>
+        <% end %>
+        <%= button_to "Cancel", :achievements_all, :id => "gamification_button", :class => "btn btn-default btn-xs", :method => :get %>
       </div>
       <% else %>
         <script type="text/javascript">
@@ -36,4 +36,3 @@
     </div>
   </body>
 </html>
-

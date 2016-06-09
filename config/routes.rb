@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'users/:id/edit' => 'users#edit', format: :json, as: :users_edit
   post 'users/:id/follow_deputy' => 'users#follow_deputy', format: :json
   post 'users/:id/unfollow_deputy' => 'users#unfollow_deputy', format: :json
-  post 'users/update' => 'users#update', format: :json, as: :users_update
+  put 'users/:id/update' => 'users#update', format: :json, as: :users_update
   delete 'users/delete/:id' => 'users#delete', as: :users_delete
 
 
