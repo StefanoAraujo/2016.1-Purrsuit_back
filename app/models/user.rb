@@ -1,6 +1,8 @@
 
 class User < ActiveRecord::Base
   acts_as :person
+
+  belongs_to :level
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",
                                   dependent: :destroy
@@ -14,7 +16,7 @@ class User < ActiveRecord::Base
   def admin?
     self.role_admin
   end
-	
+
   def follow(deputy)
     active_relationships.create(followed_id: deputy.id)
     deputy.followers_count += 1

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603011320) do
+ActiveRecord::Schema.define(version: 20160609185728) do
 
   create_table "achievements", force: :cascade do |t|
   end
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 20160603011320) do
     t.string   "description"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "levels", force: :cascade do |t|
+    t.integer "level_number"
+    t.integer "xp_min"
+    t.integer "xp_max"
+    t.string  "level_description"
   end
 
   create_table "parties", force: :cascade do |t|
@@ -89,6 +96,7 @@ ActiveRecord::Schema.define(version: 20160603011320) do
     t.integer "experience_points", default: 0,     null: false
     t.boolean "role_admin",        default: false, null: false
     t.integer "uf_id"
+    t.integer "level_id",          default: 0
   end
 
 end
