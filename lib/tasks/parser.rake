@@ -14,4 +14,8 @@ namespace :parse do
     Party.parse_parties
   end
 
+  task quests: :environment do
+    Quest.parse_quests
+  end
+
 end
