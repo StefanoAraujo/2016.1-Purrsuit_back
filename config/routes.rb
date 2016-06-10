@@ -56,6 +56,8 @@ Rails.application.routes.draw do
 	get 'parties/:id/edit' => 'parties#edit'
 	delete 'parties/:id' => 'parties#delete', as: :parties_delete
 
+  get 'levels/all' => 'levels#all', format: :json
+
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   get 'login/signin' => 'sessions#create'
