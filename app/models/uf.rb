@@ -9,6 +9,7 @@
 	# def uppercase_initials
 	# 	self.initials.upcase!
 	# end
+# :nocov:
 
 	def self.populate_ufs
 		states = [["RO", "Rondônia"], ["AC", "Acre"], ["AM", "Amazonas"], ["RR", "Roraima"], ["PA", "Pará"], ["AP", "Amapá"], ["TO", "Tocantins"], ["MA", "Maranhão"], ["PI", "Piauí"], ["CE", "Ceará"], ["RN", "Rio Grande do Norte"], ["PB", "Paraíba"], ["PE", "Pernambuco"], ["AL", "Alagoas"], ["SE", "Sergipe"], ["BA", "Bahia"], ["MG", "Minas Gerais"], ["ES", "Espirito Santo"], ["RJ", "Rio de Janeiro"], ["SP", "São Paulo"], ["PR", "Paraná"], ["SC", "Santa Catarina"], ["RS", "Rio Grande do Sul"], ["MS", "Mato Grosso do Sul"], ["MT", "Mato Grosso"], ["GO", "Goiás"], ["DF", "Distrito Federal"]]
@@ -24,7 +25,7 @@
 			end
 		end
 	end
-
+# :nocov:
 	def add_deputy deputy
 			self.deputies << deputy
 	end

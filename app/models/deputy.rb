@@ -19,6 +19,7 @@ class Deputy < ActiveRecord::Base
   validates :legislation_situation, presence: true, length: {maximum: 100}
   validates :email, presence:true
 
+# :nocov:
   def self.parse_deputies
     response = Parser.request_xml("http://www.camara.gov.br/SitCamaraWS/Deputados.asmx/ObterDeputados")
     xml_doc = Parser.get_xml response, 'DEPUTADOS', 'xml/deputies.xml'
@@ -39,7 +40,7 @@ class Deputy < ActiveRecord::Base
       partido = d.elements[10].text.to_s
       #fone = d.elements[13].text.to_s
       email = d.elements[14].text.to_s
-      
+
       deputy = Deputy.new(
                             :name => nome,
                             :deputy_name => nomeParlamentar,
@@ -56,5 +57,5 @@ class Deputy < ActiveRecord::Base
       end
     end
   end
-
+# :nocov:
 end

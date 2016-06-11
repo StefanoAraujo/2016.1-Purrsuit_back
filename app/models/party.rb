@@ -8,7 +8,7 @@ class Party < ActiveRecord::Base
 	def add_deputy deputy
 		self.deputies << deputy
 	end
-
+# :nocov:
 	def self.parse_parties
     response = Parser.request_xml("http://www.camara.gov.br/SitCamaraWS/Deputados.asmx/ObterPartidosCD")
     xml_doc = Parser.get_xml response, 'PARTIDOS', 'xml/parties.xml'
@@ -30,5 +30,5 @@ class Party < ActiveRecord::Base
 			end
     end
   end
-
+# :nocov:
 end
