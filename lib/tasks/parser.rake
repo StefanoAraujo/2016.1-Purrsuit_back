@@ -18,4 +18,7 @@ namespace :parse do
     Quest.parse_quests
   end
 
+  task levels: :environment do
+    Level.parse_levels
+  end
 end
