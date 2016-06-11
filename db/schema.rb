@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20160609185728) do
     t.integer "experience_points", default: 0,     null: false
     t.boolean "role_admin",        default: false, null: false
     t.integer "uf_id"
-    t.integer "level_id",          default: 0
+    t.integer "level_id",          default: 1
   end
 
 end
