@@ -1,5 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe Level, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Level do
+
+  it "is factory valid" do
+    factory = FactoryGirl.build(:level)
+    if factory.respond_to?(:valid?)
+    end
+  end
+
+  it "have a minimum level" do
+    level_exemple = build(:level, xp_min: 1)
+  end
+
 end
