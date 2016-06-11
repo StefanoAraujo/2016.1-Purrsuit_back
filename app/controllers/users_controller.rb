@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     begin
       if saved
         session[:user_id] = user.id
-        render json: user
+        render :nothing => true
       else
         raise "sign up failed"
       end
@@ -108,7 +108,7 @@ class UsersController < ApplicationController
       if user && user.authenticate(params[:password])
         puts "login successfull!"
         puts user
-        render json: user
+        render :nothing => true
       else
         raise "login failed!"
       end
