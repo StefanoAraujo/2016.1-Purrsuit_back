@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  get 'users/all' => 'users#all', format: :json
+  get 'users/all' => 'users#all', format: :json, as: :users_all
   get 'users/new' => 'users#new'
   post 'users/create' => 'users#create', format: :json
   get 'users/:id' => 'users#show', format: :json
   get 'users/:id/edit' => 'users#edit', format: :json, as: :users_edit
   post 'users/:id/follow_deputy' => 'users#follow_deputy', format: :json
   post 'users/:id/unfollow_deputy' => 'users#unfollow_deputy', format: :json
-  post 'users/update' => 'users#update', format: :json, as: :users_update
+  put 'users/:id/update' => 'users#update', format: :json, as: :users_update
   delete 'users/delete/:id' => 'users#delete', as: :users_delete
 
 
@@ -55,6 +55,8 @@ Rails.application.routes.draw do
 	patch 'parties/:id/update' => 'parties#update', format: :json, as: :party
 	get 'parties/:id/edit' => 'parties#edit'
 	delete 'parties/:id' => 'parties#delete', as: :parties_delete
+
+  get 'levels/all' => 'levels#all', format: :json
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'

@@ -20,10 +20,9 @@
 				<%= form_for :session, url: login_path do |f| %>
 					<%= f.email_field :email, :placeholder => "Email", :class => "gamification_fields" %>
 					<%= f.password_field :password, :placeholder => "Password", :class => "gamification_fields" %>
-					<%= f.submit "Login", :id => "gamification_button", :class =>  "waves-effect waves-light btn" %>
+					<%= f.submit "Login", :id => "gamification_button", :class =>  "btn btn-default btn-xs" %>
 				<% end %>
       </div>
     </div>
   </body>
 </html>
-

@@ -3,7 +3,10 @@ class UsersController < ApplicationController
   skip_before_filter  :verify_authenticity_token
 
   def all
-    render json: User.all
+		respond_to do |format|
+			format.html {@user = User.where(["nickname LIKE ?", "%#{params[:search]}%"])}
+			format.json {render json: User.all}
+		end
   end
 
   def show
@@ -68,11 +71,9 @@ class UsersController < ApplicationController
     user_id = params[:id]
     user = User.find_by(id: user_id)
     puts "#{user}"
-
-
       if user
         user.delete
-        render json: user
+				redirect_to :users_all
       end
   end
 
@@ -84,19 +85,21 @@ class UsersController < ApplicationController
   end
 
   def follow_deputy
-    deputy_id = params[:id]
-    user_id = params[:id]
+    deputy_id = params[:deputyId]
+    user_id = params[:userId]
     user = User.find_by(id: user_id)
     deputy = Deputy.find_by(id: deputy_id)
     user.follow(deputy)
+    render :nothing => true
   end
 
   def unfollow_deputy
-    deputy_id = params[:id]
-    user_id = params[:id]
+    deputy_id = params[:deputyId]
+    user_id = params[:userId]
     user = User.find_by(id: user_id)
     deputy = Deputy.find_by(id: deputy_id)
     user.unfollow(deputy)
+    render :nothing => true
   end
 
   def ionic_login
@@ -117,6 +120,6 @@ class UsersController < ApplicationController
 
   private
     def get_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:nickname, :email, :password, :password_confirmation)
     end
 end

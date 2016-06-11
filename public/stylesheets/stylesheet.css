@@ -1,5 +1,13 @@
 @import "bootstrap";
 
+#search-button{
+	margin-top: -30px;
+	margin-left: 580px;
+}
+#searchTF{
+	margin-top: -10px;
+	margin-bottom: -20px;
+}
 #alert{
 	width: 780px;
 	margin-left: 10px;

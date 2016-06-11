@@ -1,15 +1,16 @@
 
 class User < ActiveRecord::Base
   acts_as :person
+  belongs_to :level
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",
                                   dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_secure_password
 
-  validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: {maximum: 255}
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+	validates :nickname, presence: true, length: { maximum: 20 }, uniqueness: true
 
   def admin?
     self.role_admin

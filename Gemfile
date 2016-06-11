@@ -28,7 +28,6 @@ gem 'active_record-acts_as'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'active_model_serializers'
 
-gem 'httparty'
 
 
 group :development, :test do
@@ -42,9 +41,17 @@ end
 group :test do
   gem 'faker'
   gem 'capybara'
-  gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
+
+  # Integration with between TravisCI and Codeclimate
+  gem 'codeclimate-test-reporter', require: nil
+end
+
+group :test, :development do
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
 end
 
 group :development do
