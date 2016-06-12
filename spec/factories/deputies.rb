@@ -10,7 +10,7 @@ FactoryGirl.define do
     gender "MASCULINO"
     image_path "qualquer"
     uf_id 1
-    party_id 2
-    followers_count 2
+    party_id 1
+    followers_count 1
   end
 end
