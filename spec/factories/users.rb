@@ -9,5 +9,7 @@ FactoryGirl.define do
     password_confirmation random_password
     experience_points 0
     role_admin false
+    level_id 1
+    uf_id 1
   end
 end

@@ -11,6 +11,6 @@ FactoryGirl.define do
     image_path "qualquer"
     uf_id 1
     party_id 1
-    followers_count 2
+    followers_count 1
   end
 end
