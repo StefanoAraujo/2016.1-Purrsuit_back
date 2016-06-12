@@ -12,28 +12,30 @@ class UsersController < ApplicationController
   def show
     id_user = params[:id]
         users = User.where(id: id_user)
-        user = nil
+        @user = nil
         if (users.length > 0)
-          user = users.first
+          @user = users.first
         else
           raise "ERROR: No user to be shown"
         end
-          render json: user
+          render json: @user
   end
 
   def new
+    @user = User.new
+    render :nothing =>true
   end
 
   def create
     #puts get_params
-    user = User.new(get_params)
-    puts user
-    saved = user.save
+    @user = User.new(user_params)
+    saved = @user.save
     begin
       if saved
-        session[:user_id] = user.id
-        render json: user
+        session[:user_id] = @user.id
+        render json: @user
       else
+        render :nothing=>true
         raise "sign up failed"
       end
     rescue RuntimeError => error_signup
@@ -53,18 +55,10 @@ class UsersController < ApplicationController
 
   def update
     user_id = params[:id]
-    puts "#{params[:user]}"
-    user = User.find_by(id: user_id)
-    begin
-      if user
-        user.update(get_params)
-        render json: user
-      else
-        raise "user edit failed"
-      end
-    rescue RuntimeError => error_edit
-      puts "#{error_edit}"
-    end
+    users = User.where(id: user_id)
+    @user = users.first
+    @user.update(user_params)
+    render json: @user
   end
 
   def delete
@@ -119,7 +113,7 @@ class UsersController < ApplicationController
   end
 
   private
-    def get_params
-      params.require(:user).permit(:nickname, :email, :password, :password_confirmation)
+    def user_params
+      params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :level_id, :uf_id)
     end
 end
