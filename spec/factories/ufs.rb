@@ -2,7 +2,7 @@ require 'faker'
 
 FactoryGirl.define do
   factory :uf do
-    name "ESTADO DO TESTE COM 90% DE COVERAGE"
+    name "ESTADO DO TESTE"
     initials "GG"
   end
 end
