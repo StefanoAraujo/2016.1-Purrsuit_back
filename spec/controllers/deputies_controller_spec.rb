@@ -10,7 +10,8 @@ describe DeputiesController do
   end
 
   describe "GET #all" do
-    it "returns all deputies json"
+    it "returns all deputies json" do
+    end
   end
 
   describe 'GET #new' do
@@ -24,6 +25,12 @@ describe DeputiesController do
     it "assigns the requested deputy to @deputy" do
       get 'show', :id => @deputy.id
       expect(assigns(:deputy)).to eq @deputy
+    end
+    it "returns json deputy" do
+      deputy_serializer = DeputySerializer.new(@deputy)
+      deputy_json = deputy_serializer.to_json
+      get 'show', :id => @deputy.id
+      expect(response.body).to have_content deputy_json
     end
   end
 
@@ -75,5 +82,8 @@ describe DeputiesController do
     it  "shows followed deputies from a user"
   end
 
+  describe 'GET #search' do
+    it  "returns the correct deputy"
+  end
 
 end
