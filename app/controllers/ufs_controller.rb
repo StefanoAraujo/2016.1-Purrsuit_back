@@ -5,19 +5,29 @@ class UfsController < ApplicationController
   end
 
   def show
-    render json: Uf.find(params[:id])
+    uf_id = params[:id]
+    selected_ufs = Uf.where(id: uf_id)
+    @uf = nil
+    if (selected_ufs.length > 0)
+      @uf = selected_ufs.first
+    else
+      raise "ERROR"
+    end
+    render json: @uf
   end
 
   def new
     @uf = Uf.new
+    render :nothing =>true
   end
 
   def create
     @uf = Uf.new(uf_params)
-    if @uf.save
-      redirect_to :ufs_all
-		else
-			render 'new'
+    uf_saved = @uf.save
+    if uf_saved
+      render json: @uf
+    else
+      render :nothing =>true
     end
   end
 
@@ -29,20 +39,23 @@ class UfsController < ApplicationController
   end
 
   def update
-    @uf = Uf.find(params[:id])
-
-    if @uf.update(uf_params)
-      redirect_to :ufs_all
-    else
-      render 'edit'
-    end
+    uf_id = params[:id]
+    ufs = Uf.where(id: uf_id)
+    @uf = ufs.first
+    @uf.update(uf_params)
+    render json: @uf
   end
 
   def delete
-    id_uf = params[:id]
-    ufs = Uf.where(id: id_uf)
-    uf = ufs.first
+    uf_id = params[:id]
+    selected_ufs = Uf.where(id: uf_id)
+    if (selected_ufs.length > 0)
+      @uf = selected_ufs.first
+      @uf.destroy
     redirect_to :ufs_all
+    else
+      render :nothing =>true
+    end
   end
 
   private

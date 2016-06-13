@@ -5,11 +5,20 @@ class PartiesController < ApplicationController
   end
 
   def show
-    render json: Party.find(params[:id])
+    party_id = params[:id]
+    selected_parties = Party.where(id: party_id)
+    @party = nil
+    if (selected_parties.length > 0)
+      @party = selected_parties.first
+    else
+      raise "ERROR"
+    end
+    render json: @party
   end
 
   def new
     @party = Party.new
+    render :nothing =>true
   end
 
   def create
@@ -37,10 +46,15 @@ class PartiesController < ApplicationController
   end
 
   def delete
-    id_party = params[:id]
-    partys = Party.where(id: id_party)
-    party = partys.first
-    redirect_to :parties_all
+    party_id = params[:id]
+    selected_parties = Party.where(id: party_id)
+    if (selected_parties.length > 0)
+      @party = selected_parties.first
+      @party.destroy
+      redirect_to :parties_all
+    else
+      render :nothing => true
+    end
   end
 
   private

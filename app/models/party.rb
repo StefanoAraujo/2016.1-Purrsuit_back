@@ -1,7 +1,7 @@
 class Party < ActiveRecord::Base
 	has_many :deputies
 
-	validates :name, presence: true, length: { minimum: 10 }, uniqueness: true
+	validates :name, presence: true, length: { minimum: 7 }, uniqueness: true
 	validates :initials, presence: true, length: { minimum: 2 }, uniqueness: true
 	# validates :uf_id , presence: true
 
@@ -10,7 +10,7 @@ class Party < ActiveRecord::Base
 	end
 # :nocov:
 	def self.parse_parties
-    response = Parser.request_xml("http://www.camara.gov.br/SitCamaraWS/Deputados.asmx/ObterPartidosCD")
+    response = Parser.request_xml("http://www.camara.leg.br/SitCamaraWS/Deputados.asmx/ObterPartidosCD")
     xml_doc = Parser.get_xml response, 'PARTIDOS', 'xml/parties.xml'
 		Party.save_parties xml_doc
 	end

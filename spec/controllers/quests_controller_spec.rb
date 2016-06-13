@@ -4,6 +4,17 @@ describe QuestsController do
 
 	#Missing #edit #all #show
 	
+	before :each do
+		@quest = create(:quest)
+	end
+
+	describe 'GET #show' do
+		it "assigns the requested quest to @quest" do
+			get 'show', :id => @quest
+			expect(assigns(:quest)).to eq @quest
+		end
+	end
+
 	describe 'GET #new' do
 		it "assigns a new Quest to @Quest" do
 			get :new
