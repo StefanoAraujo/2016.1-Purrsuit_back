@@ -10,7 +10,15 @@ class QuestsController < ApplicationController
 	end
 
 	def show
-		render json: Quest.find(params[:id])
+		quest_id = params[:id]
+		selected_quests = Quest.where(id: quest_id)
+		@quest = nil
+		if selected_quests.length > 0
+			@quest = selected_quests.first
+		else
+			raise "ERROR"
+		end
+		render json: @quest
 	end
 
 	def new

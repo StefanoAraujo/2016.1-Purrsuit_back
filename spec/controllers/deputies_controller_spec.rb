@@ -2,53 +2,54 @@ require 'spec_helper'
 
 describe DeputiesController do
 
+  before :each do
+    @uf = create(:uf)
+    @party = create(:party)
+    @deputy = create(:deputy)
+    @user = create(:user)
+  end
+
+  describe "GET #all" do
+    it "returns all deputies json" do
+    end
+  end
+
   describe 'GET #new' do
-    it "assigns a new Deputy to @Deputy" do
+    it "assigns a new Deputy to @deputy" do
       get :new
       expect(assigns(:deputy)).to be_a_new(Deputy)
     end
   end
-=begin
-  describe 'GET #show' do
 
-    it "should be in json format" do
-      deputy_example = create(:deputy)
-      get 'show', :id => deputy_example, format: :json
-      hash = JSON.parse(deputy_example.to_json)
-      hash.delete("created_at")
-      hash.delete("updated_at")
-      deputy_json = hash.to_json
+  describe 'GET #show' do
+    it "assigns the requested deputy to @deputy" do
+      get 'show', :id => @deputy.id
+      expect(assigns(:deputy)).to eq @deputy
+    end
+    it "returns json deputy" do
+      deputy_serializer = DeputySerializer.new(@deputy)
+      deputy_json = deputy_serializer.to_json
+      get 'show', :id => @deputy.id
       expect(response.body).to have_content deputy_json
     end
-=end
-=begin
-    it "assigns the requested deputy to @deputy" do
-      deputy_example = create(:deputy)
-      get 'show', :id => deputy_example.id
-      expect(assigns(:deputy)).to eq deputy_example
-    end
   end
-=end
-describe 'POST #create' do
-=begin
-   context "With valid attributes" do
-     it "saves the new deputy in the database" do
-       expect {
-         post 'create', deputy: attributes_for(:deputy)
-       }.to change(Deputy, :count).by(1)
-     end
-   end
-=end
 
-   context "With invalid attributes" do
-
-     it "does not save the deputy in the database" do
-       expect{
-         post 'create', deputy: attributes_for(:deputy, deputy_name: nil)
-       }.to_not change(Deputy, :count)
+  describe 'POST #create' do
+    context "With valid attributes" do
+      it "saves the new deputy in the database" do
+        expect {
+          post 'create', deputy: attributes_for(:deputy)
+        }.to change(Deputy, :count).by(1)
       end
     end
-end
+    context "With invalid attributes" do
+      it "does not save the deputy in the database" do
+        expect{
+          post 'create', deputy: attributes_for(:deputy, deputy_name: nil)
+        }.to_not change(Deputy, :count)
+      end
+    end
+  end
 
   describe 'DELETE #delete' do
     it "delete an user with a given id" do
@@ -59,39 +60,30 @@ end
     end
   end
 
-describe 'PATCH #update' do
-=begin
+  describe 'PATCH #update' do
     context "valid attributes" do
-      before :each do
-        @deputy = create(:deputy, deputy_name: "Nome")
-      end
-
       it "changes @deputy's atrributes" do
         patch 'update', id:@deputy, deputy: attributes_for(:deputy, name: "Mudando")
         @deputy.reload
         expect(@deputy.name).to eq("Mudando")
       end
     end
-  end
-=end
-=begin
-  describe 'GET #followed_deputies' do
-    it "Should be in JSON format" do
-      user_example = create(:user)
-      deputy_example = create (:deputy)
-      user_example.follow(deputy_example)
-      get 'followed_deputies', :id => user_example, format: :json
-      hash = JSON.parse(user_example.following.to_json)
-      hash.delete("created_at")
-      hash.delete("updated_at")
-      hash.delete("uf_id")
-      hash.delete("pary_id")
-      hash[:uf] = UfSerializer.new(object.uf).attributes
-      hash[:party] = PartySerializer.new(object.party).attributes
-      followed_deputies_json = hash.to_json
-      expect(response.body).to have_content followed_deputies_json
+    context "invalid attributes" do
+      it "does not change @deputy attributes" do
+        @deputy = create(:deputy, name: "Nome")
+        patch 'update', id:@deputy, deputy: attributes_for(:deputy, name: nil)
+        @deputy.reload
+        expect(@deputy.name).to eq("Nome")
+      end
     end
   end
-=end
+
+  describe 'GET #followed_deputies' do
+    it  "shows followed deputies from a user"
   end
+
+  describe 'GET #search' do
+    it  "returns the correct deputy"
+  end
+
 end
