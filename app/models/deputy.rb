@@ -21,7 +21,7 @@ class Deputy < ActiveRecord::Base
 
 # :nocov:
   def self.parse_deputies
-    response = Parser.request_xml("http://www.camara.gov.br/SitCamaraWS/Deputados.asmx/ObterDeputados")
+    response = Parser.request_xml("http://www.camara.leg.br/SitCamaraWS/Deputados.asmx/ObterDeputados")
     xml_doc = Parser.get_xml response, 'DEPUTADOS', 'xml/deputies.xml'
     Deputy.save_deputies(xml_doc)
   end

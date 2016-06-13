@@ -10,7 +10,7 @@ class Party < ActiveRecord::Base
 	end
 # :nocov:
 	def self.parse_parties
-    response = Parser.request_xml("http://www.camara.gov.br/SitCamaraWS/Deputados.asmx/ObterPartidosCD")
+    response = Parser.request_xml("http://www.camara.leg.br/SitCamaraWS/Deputados.asmx/ObterPartidosCD")
     xml_doc = Parser.get_xml response, 'PARTIDOS', 'xml/parties.xml'
 		Party.save_parties xml_doc
 	end
