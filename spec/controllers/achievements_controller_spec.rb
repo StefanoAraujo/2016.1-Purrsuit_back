@@ -4,6 +4,17 @@ describe AchievementsController do
 	
 	#Missing #edit #all #show
 	
+	before :each do
+		@achievement = create(:achievement)
+	end
+	
+	describe 'GET #show' do
+		it "assigns the requested achievement to @achievement" do
+			get 'show', :id => @achievement
+			expect(assigns(:achievement)).to eq @achievement
+		end
+	end
+	
 	describe 'GET #new' do
 		it "assigns a new Achievement to @Achievement" do
 			get :new

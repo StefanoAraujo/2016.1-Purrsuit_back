@@ -10,13 +10,15 @@ class AchievementsController < ApplicationController
 	end
 
 	def show
-		achievements = Achievement.where(params[:id])
-		@achievement = achievements.first
-	
-		respond_to do |format|
-			format.html
-			format.json { render json: @achievement }
+		achievement_id = params[:id]
+		selected_achievements = Achievement.where(id: achievement_id)
+		@achievement = nil
+		if selected_achievements.length > 0
+			@achievement = selected_achievements.first
+		else
+			raise "ERROR"
 		end
+		render json: @achievement
 	end
 
 	def new
