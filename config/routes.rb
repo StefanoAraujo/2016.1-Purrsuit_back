@@ -39,7 +39,6 @@ Rails.application.routes.draw do
  	post 'ufs/create' => 'ufs#create', as: :ufs
 	get 'ufs/:id' => 'ufs#show', format: :json
 	patch 'ufs/:id/update' => 'ufs#update', format: :json, as: :uf
-	get 'ufs/:id/edit' => 'ufs#edit'
 	delete 'ufs/:id' => 'ufs#delete', as: :ufs_delete
 
 	get 'parties/all' => 'parties#all', format: :json

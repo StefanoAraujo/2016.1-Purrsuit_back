@@ -30,6 +30,13 @@ describe PartiesController do
     end
   end
 
+  describe 'POST #edit'do
+    it "should return sucess" do
+      post :edit, id:@party
+      expect(response).to have_http_status(200)
+    end
+  end
+
   describe 'POST #create' do
     context "With valid attributes" do
       it "saves the new party in the database" do
