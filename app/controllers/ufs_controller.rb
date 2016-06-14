@@ -31,13 +31,6 @@ class UfsController < ApplicationController
     end
   end
 
-  def edit
-
-    @uf = Uf.find(params[:id])
-    render 'edit'
-
-  end
-
   def update
     uf_id = params[:id]
     ufs = Uf.where(id: uf_id)

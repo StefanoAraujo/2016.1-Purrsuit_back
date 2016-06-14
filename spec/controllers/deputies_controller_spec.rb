@@ -11,6 +11,10 @@ describe DeputiesController do
 
   describe "GET #all" do
     it "returns all deputies json" do
+      deputy_all = Deputy.order(:deputy_name)
+      deputy_json = deputy_all.map{|deputy| DeputySerializer.new(deputy)}.to_json
+      get :all
+      expect(response.body).to match(deputy_json)
     end
   end
 
@@ -27,8 +31,7 @@ describe DeputiesController do
       expect(assigns(:deputy)).to eq @deputy
     end
     it "returns json deputy" do
-      deputy_serializer = DeputySerializer.new(@deputy)
-      deputy_json = deputy_serializer.to_json
+      deputy_json = DeputySerializer.new(@deputy).to_json
       get 'show', :id => @deputy.id
       expect(response.body).to have_content deputy_json
     end
@@ -79,11 +82,26 @@ describe DeputiesController do
   end
 
   describe 'GET #followed_deputies' do
-    it  "shows followed deputies from a user"
+    it  "shows followed deputies from a user" do
+      @user.follow(@deputy)
+      followed_deputies = @user.following
+      followed_json = followed_deputies.map{|deputy| DeputySerializer.new(deputy)}.to_json
+      get :followed_deputies, id:@user.id
+      expect(response.body).to match(followed_json)
+    end
   end
 
   describe 'GET #search' do
-    it  "returns the correct deputy"
+      before :each do
+        create(:deputy)
+        get :search, toSearch:@deputy.deputy_name
+        @deputy_json = response.body
+      end
+    it  "returns the correct deputy" do
+      get :search, toSearch:@deputy.deputy_name
+      expect(response.body).to match(@deputy_json)
+    end
+
   end
 
 end

@@ -8,7 +8,12 @@ describe PartiesController do
 
 
   describe "GET #all" do
-    it "returns all parties json"
+    it "returns all parties json" do
+      party_all = Party.all
+      party_json = party_all.map{|party| PartySerializer.new(party)}.to_json
+      get :all
+      expect(response.body).to match(party_json)
+    end
   end
 
   describe 'GET #new' do
@@ -22,6 +27,13 @@ describe PartiesController do
     it "assigns the requested Party to @party" do
       get 'show', :id => @party.id
       expect(assigns(:party)).to eq @party
+    end
+  end
+
+  describe 'POST #edit'do
+    it "should return sucess" do
+      post :edit, id:@party
+      expect(response).to have_http_status(200)
     end
   end
 

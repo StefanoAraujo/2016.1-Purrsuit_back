@@ -1,6 +1,6 @@
 class Quest < ActiveRecord::Base
 	acts_as :gamification
-	
+# :nocov:
 	def self.parse_quests
 		quests = [["Seguir 10 deputados", 100, "Siga 10 deputados"],
 		["Entre 5 vezes", 150, "Você deve entrar no app 5 vezes"],
@@ -25,4 +25,5 @@ class Quest < ActiveRecord::Base
 			end
 		end
 	end
+# :nocov:
 end

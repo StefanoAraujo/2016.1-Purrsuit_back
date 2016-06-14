@@ -8,7 +8,12 @@ describe UfsController do
 
 
   describe "GET #all" do
-    it "returns all ufs json"
+    it "returns all ufs json" do
+    uf_all = Uf.all
+    uf_json = uf_all.map{|uf| UfSerializer.new(uf)}.to_json
+    get :all
+    expect(response.body).to match(uf_json)
+    end
   end
 
   describe 'GET #new' do

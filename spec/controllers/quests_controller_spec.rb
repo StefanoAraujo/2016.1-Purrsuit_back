@@ -77,7 +77,7 @@ describe QuestsController do
 			new_name = @quest.name
 			expect(new_name!=old_name)
 		end
-		it "has an invalid attribute value" do
+		it "has an invalid attibute value" do
 			expect(
 				patch 'update', id: @quest, quest: attributes_for(:quest, name: nil)
 			).to render_template(:edit)
