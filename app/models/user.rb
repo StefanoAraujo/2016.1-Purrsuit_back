@@ -11,11 +11,11 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: {maximum: 255}
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 	validates :nickname, presence: true, length: { maximum: 20 }, uniqueness: true
-
+# :nocov:
   def admin?
     self.role_admin
   end
-
+# :nocov:
   def follow(deputy)
     active_relationships.create(followed_id: deputy.id)
     deputy.followers_count += 1
