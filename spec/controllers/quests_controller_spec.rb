@@ -21,6 +21,12 @@ describe QuestsController do
 			get 'show', :id => @quest
 			expect(assigns(:quest)).to eq @quest
 		end
+		it "does not find the requested quest" do
+			get 'delete', :id => @quest
+			expect{
+				get 'show', :id => @quest
+			}.to raise_error(RuntimeError, "ERROR")
+		end
 	end
 
 	describe 'GET #new' do
@@ -58,11 +64,15 @@ describe QuestsController do
 
 	describe 'PATCH #update' do
 		it "changes a quest attribute" do
-			quest = create(:quest)
-			old_name = quest.name
-			patch 'update', id: quest, quest: attributes_for(:quest, name: "A different name")
-			new_name = quest.name
+			old_name = @quest.name
+			patch 'update', id: @quest, quest: attributes_for(:quest, name: "A different name")
+			new_name = @quest.name
 			expect(new_name!=old_name)
+		end
+		it "has an invalid attibute value" do
+			expect(
+				patch 'update', id: @quest, quest: attributes_for(:quest, name: nil)
+			).to render_template(:edit)
 		end
 	end
 end
