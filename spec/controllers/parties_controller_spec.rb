@@ -28,6 +28,12 @@ describe PartiesController do
       get 'show', :id => @party.id
       expect(assigns(:party)).to eq @party
     end
+    it "does not find the requested party" do
+      get 'delete', :id => @party
+      expect{
+        get 'show', :id => @party
+      }.to raise_error(RuntimeError, "ERROR")
+    end
   end
 
   describe 'POST #edit'do
@@ -60,6 +66,14 @@ describe PartiesController do
       expect{
         delete 'delete', :id => party_example.id
       }.to change(Party, :count).by(-1)
+    end
+    before :each do
+      @party_example = create(:party, name:"PARTIDO DOS COVERAGE", initials: "PDCOV")
+      delete 'delete', :id => @party_example.id
+    end
+    it "does not find the requested party" do
+      get 'delete', :id => @party_example.id
+      expect(response.body).to be_blank
     end
   end
 

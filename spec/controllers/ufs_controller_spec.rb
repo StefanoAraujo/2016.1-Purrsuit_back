@@ -28,6 +28,12 @@ describe UfsController do
       get 'show', :id => @uf.id
       expect(assigns(:uf)).to eq @uf
     end
+    it "does not find the requested uf" do
+      get 'delete', :id => @uf
+      expect{
+        get 'show', :id => @uf
+      }.to raise_error(RuntimeError, "ERROR")
+    end
   end
 
   describe 'POST #create' do
@@ -53,6 +59,14 @@ describe UfsController do
       expect{
         delete 'delete', :id => uf_example.id
       }.to change(Uf, :count).by(-1)
+    end
+    before :each do
+      @uf_example = create(:uf, name:"coverage", initials: "KK")
+      delete 'delete', :id => @uf_example.id
+    end
+    it "does not find the requested uf" do
+      get 'delete', :id => @uf_example.id
+      expect(response.body).to be_blank
     end
   end
 
