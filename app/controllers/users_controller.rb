@@ -90,12 +90,10 @@ class UsersController < ApplicationController
   end
 
   def ionic_login
-    user = User.find_by(email: params[:email])
+    @user = User.find_by(email: params[:email])
     begin
-      if user && user.authenticate(params[:password])
-        puts "login successfull!"
-        puts user
-        render json: user
+      if @user && @user.authenticate(params[:password])
+        render json: @user
       else
         raise "login failed!"
       end
