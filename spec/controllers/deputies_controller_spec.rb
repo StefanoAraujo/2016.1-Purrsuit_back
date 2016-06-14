@@ -35,6 +35,12 @@ describe DeputiesController do
       get 'show', :id => @deputy.id
       expect(response.body).to have_content deputy_json
     end
+    it "does not find the requested deputy" do
+      get 'delete', :id => @deputy
+      expect{
+        get 'show', :id => @deputy
+      }.to raise_error(RuntimeError, "ERROR")
+    end
   end
 
   describe 'POST #create' do
@@ -60,6 +66,13 @@ describe DeputiesController do
       expect{
         delete 'delete', :id => deputy_example.id
       }.to change(Deputy, :count).by(-1)
+    end
+      before :each do
+        get 'delete', :id => @deputy
+      end
+    it "does not find the requested deputy" do
+      get :delete,:id => @deputy
+      expect(response.body).to be_blank
     end
   end
 
@@ -101,6 +114,7 @@ describe DeputiesController do
       get :search, toSearch:@deputy.deputy_name
       expect(response.body).to match(@deputy_json)
     end
+
 
   end
 

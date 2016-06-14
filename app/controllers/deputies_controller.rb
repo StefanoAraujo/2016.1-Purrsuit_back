@@ -34,8 +34,6 @@ class DeputiesController < ApplicationController
       else
         raise "Deputies not found"
       end
-    else
-      raise "Invalid field search"
     end
   end
 
