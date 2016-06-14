@@ -7,6 +7,7 @@ describe QuestsController do
 	before :each do
 		@quest = create(:quest)
 	end
+
 	describe "GET #all" do
 		it "returns all quests json" do
 			quest_all = Quest.all
@@ -59,6 +60,13 @@ describe QuestsController do
 			expect{
 				delete 'delete', :id => quest_example.id
 			}.to change(Quest, :count).by(-1)
+		end
+	end
+	
+	describe 'GET #edit' do
+		it "should return sucess" do
+			post :edit, id: @quest
+			expect(response).to have_http_status(200)
 		end
 	end
 
