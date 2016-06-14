@@ -71,13 +71,6 @@ class UsersController < ApplicationController
       end
   end
 
-  def followers
-    deputy_id = params[:id]
-    deputy = Deputy.find_by(id: deputy_id)
-    deputy_followers = deputy.followers.count
-    render json: deputy_followers
-  end
-
   def follow_deputy
     deputy_id = params[:deputyId]
     user_id = params[:userId]

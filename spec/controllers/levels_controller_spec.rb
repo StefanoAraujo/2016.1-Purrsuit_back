@@ -1,14 +1,17 @@
 require 'spec_helper'
 
 describe LevelsController do
-
-  describe 'GET #show' do
-
-=begin  it "should be in json format" do
-      level_example = create(:level)
-      get 'show', :level => level_example, format: :json
-    end
-=end
+  before :each do
+    @level = create(:level)
   end
+
+  describe "GET #all" do
+		it "returns all levels json" do
+			level_all = Level.all
+			level_json = level_all.map{|level| LevelSerializer.new(level)}.to_json
+			get :all
+			expect(response.body).to match(level_json)
+		end
+	end
 
 end

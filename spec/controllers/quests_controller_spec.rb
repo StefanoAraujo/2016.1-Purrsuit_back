@@ -3,9 +3,17 @@ require 'spec_helper'
 describe QuestsController do
 
 	#Missing #edit #all #show
-	
+
 	before :each do
 		@quest = create(:quest)
+	end
+	describe "GET #all" do
+		it "returns all quests json" do
+			quest_all = Quest.all
+			quest_json = quest_all.map{|quest| QuestSerializer.new(quest)}.to_json
+			get :all, :format => 'json'
+			expect(response.body).to match(quest_json)
+		end
 	end
 
 	describe 'GET #show' do
@@ -26,7 +34,7 @@ describe QuestsController do
 		context "with valids attributes" do
 			it "saves the new quest in the database" do
 				expect{
-					post 'create', quest: attributes_for(:quest)	
+					post 'create', quest: attributes_for(:quest)
 				}.to change(Quest, :count).by(1)
 			end
 		end
@@ -38,7 +46,7 @@ describe QuestsController do
 			end
 		end
 	end
-	
+
 	describe 'DELETE #delete' do
 		it "delete a quest with a given id" do
 			quest_example = create(:quest)

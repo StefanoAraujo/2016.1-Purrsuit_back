@@ -7,7 +7,7 @@ class Level < ActiveRecord::Base
   validates :xp_max, presence: true
   validates :level_description, presence: true
 
-
+# :nocov:
   def self.parse_levels
 
     levels = [[0, 100, "Level 1", 1], [101, 299, "Level 2", 2], [300, 400, "Level 3", 3]]
@@ -19,4 +19,5 @@ class Level < ActiveRecord::Base
       end
     end
   end
+# :nocov:
 end

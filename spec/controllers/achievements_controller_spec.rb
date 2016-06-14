@@ -1,27 +1,36 @@
 require 'spec_helper'
 
 describe AchievementsController do
-	
+
 	#Missing #edit #all #show
-	
+
 	before :each do
 		@achievement = create(:achievement)
 	end
-	
+
+	describe "GET #all" do
+		it "returns all achievements json" do
+			achv_all = Achievement.all
+			achv_json = achv_all.map{|achv| AchievementSerializer.new(achv)}.to_json
+			get :all, :format => 'json'
+			expect(response.body).to match(achv_json)
+		end
+	end
+
 	describe 'GET #show' do
 		it "assigns the requested achievement to @achievement" do
 			get 'show', :id => @achievement
 			expect(assigns(:achievement)).to eq @achievement
 		end
 	end
-	
+
 	describe 'GET #new' do
 		it "assigns a new Achievement to @Achievement" do
 			get :new
 			expect(assigns(:achievement)).to be_a_new(Achievement)
 		end
 	end
-	
+
 	describe 'POST #create' do
 		context "with valids attributes" do
 			it "saves the new achievement in the database" do
@@ -40,7 +49,7 @@ describe AchievementsController do
 		end
 =end
 	end
-	
+
 	describe 'DELETE #delete' do
 		it "delete an achievement with a given id" do
 			achievement_example = create(:achievement)
@@ -49,7 +58,7 @@ describe AchievementsController do
 			}.to change(Achievement, :count).by(-1)
 		end
 	end
-	
+
 	describe 'PATCH #update' do
 		it "changes an achievement attibute" do
 			achievement = create(:achievement)

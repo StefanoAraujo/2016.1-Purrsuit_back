@@ -8,7 +8,12 @@ describe PartiesController do
 
 
   describe "GET #all" do
-    it "returns all parties json"
+    it "returns all parties json" do
+      party_all = Party.all
+      party_json = party_all.map{|party| PartySerializer.new(party)}.to_json
+      get :all
+      expect(response.body).to match(party_json)
+    end
   end
 
   describe 'GET #new' do

@@ -10,7 +10,12 @@ describe UsersController do
   end
 
   describe "GET #all" do
-    it "returns all users json"
+    it "returns all users json" do
+      user_all = User.all
+      user_json = user_all.map{|user| UserSerializer.new(user)}.to_json
+      get :all, :format => 'json'
+      expect(response.body).to match(user_json)
+    end
   end
 
   describe 'GET #new' do
@@ -71,11 +76,11 @@ describe UsersController do
     end
   end
 
-  describe 'GET #follow_deputy' do
+  describe 'POST #follow_deputy' do
     it "follows a deputy" do
-      @user.follow(@deputy)
+      post :follow_deputy, id:@user, userId:@user, deputyId:@deputy
       expect(@user.following?(@deputy)).to eq true
-      expect(@deputy.followers_count).to eq 2
+      expect(@deputy.followers_count).to eq 1
 
     end
 
@@ -85,19 +90,14 @@ describe UsersController do
     it "unfollows a deputy" do
       @user.follow(@deputy)
       expect(@user.following?(@deputy)).to eq true
-      expect(@deputy.followers_count).to eq 2
-      @user.unfollow(@deputy)
+      post :unfollow_deputy, id:@user, userId:@user, deputyId:@deputy
       expect(@user.following?(@deputy)).to eq false
-      expect(@deputy.followers_count).to eq 1
+
     end
   end
 
-  describe 'GET #followers' do
-    it "shows the followers of a deputy"
-  end
-
   describe 'GET #ionic_login' do
-    it "does a login"
+      it "does a login"
   end
 
 

@@ -25,8 +25,9 @@
 			end
 		end
 	end
-# :nocov:
+
 	def add_deputy deputy
 			self.deputies << deputy
 	end
+	# :nocov:
 end
