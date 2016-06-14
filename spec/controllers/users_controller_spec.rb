@@ -32,6 +32,13 @@ describe UsersController do
     end
   end
 
+  describe 'POST #edit'do
+    it "should return sucess" do
+      post :edit, id:@user
+      expect(response).to have_http_status(200)
+    end
+  end
+
   describe 'POST #create' do
     context "With valid attributes" do
       it "saves the new user in the database" do
@@ -97,7 +104,12 @@ describe UsersController do
   end
 
   describe 'GET #ionic_login' do
-      it "does a login"
+      it "does a login" do
+        sucess = "You are being redirected"
+        get :ionic_login, email:@user.email, password:@user.email
+        expect(response.body).to have_content sucess
+        expect(response).to redirect_to('login')
+      end
   end
 
 
