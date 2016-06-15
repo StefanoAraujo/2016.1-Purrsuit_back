@@ -6,6 +6,7 @@ class CreateLevels < ActiveRecord::Migration
       t.integer :xp_min, presence: true
       t.integer :xp_max, presence: true
       t.string :level_description, presence: true
+      t.string :image_url, presence: true 
     end
 
   end
