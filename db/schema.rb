@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615183319) do
+ActiveRecord::Schema.define(version: 20160617030629) do
 
   create_table "achievements", force: :cascade do |t|
   end
@@ -69,6 +69,17 @@ ActiveRecord::Schema.define(version: 20160615183319) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  create_table "quest_relationships", force: :cascade do |t|
+    t.integer  "challenger_id"
+    t.integer  "challenged_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "quest_relationships", ["challenged_id"], name: "index_quest_relationships_on_challenged_id"
+  add_index "quest_relationships", ["challenger_id", "challenged_id"], name: "index_quest_relationships_on_challenger_id_and_challenged_id", unique: true
+  add_index "quest_relationships", ["challenger_id"], name: "index_quest_relationships_on_challenger_id"
 
   create_table "quests", force: :cascade do |t|
   end
