@@ -6,6 +6,12 @@ class User < ActiveRecord::Base
                                   foreign_key: "follower_id",
                                   dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
+
+  has_many :quests_relationships, class_name: "QuestRelationship",
+                                foreign_key: "challenged_id",
+                                dependent: :destroy
+  has_many :challengers, through: :quests_relationships, source: :challenger
+
   has_secure_password
 
   validates :email, presence: true, length: {maximum: 255}
@@ -32,4 +38,16 @@ class User < ActiveRecord::Base
     following.include?(deputy)
   end
 
+  def receive_quest(quest)
+    quests_relationships.create(challenger_id: quest.id)
+  end
+
+  def complete_quest(quest)
+    quests_relationships.find_by(challenger_id: quest.id).destroy
+  end
+
+  def doing?(quest)
+    challengers.include?(quest)
+  end
+  
 end
