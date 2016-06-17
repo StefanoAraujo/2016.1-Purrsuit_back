@@ -57,7 +57,7 @@ class UsersController < ApplicationController
     user_id = params[:id]
     users = User.where(id: user_id)
     @user = users.first
-    @user.update(user_params)
+    @user.update(user_update_params)
     render json: @user
   end
 
@@ -105,6 +105,10 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :level_id, :uf_id)
+      params.require(:user).permit(:nickname, :email, :password, :password_confirmation)
+    end
+
+    def user_update_params
+      params.require(:user).permit(:name, :nickname, :email, :password, :gender, :age, :level_id, :uf_id)
     end
 end
