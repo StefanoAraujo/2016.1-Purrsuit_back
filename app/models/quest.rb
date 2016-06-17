@@ -1,5 +1,12 @@
 class Quest < ActiveRecord::Base
 	acts_as :gamification
+
+	has_many :user_relationships, class_name: "QuestRelationship",
+																foreign_key: "challenger_id",
+																dependent: :destroy
+
+	has_many :challengeds, through: :user_relationships, source: :challenged
+	
 # :nocov:
 	def self.parse_quests
 		quests = [["Seguir 10 deputados", 100, "Siga 10 deputados"],
