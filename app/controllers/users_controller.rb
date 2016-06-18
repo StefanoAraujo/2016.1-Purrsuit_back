@@ -58,7 +58,10 @@ class UsersController < ApplicationController
     users = User.where(id: user_id)
     @user = users.first
     @user.update(user_update_params)
-    render json: @user
+    respond_to do |format|
+      format.html {redirect_to :users_all}
+      format.json {render json: @user}
+    end
   end
 
   def delete
