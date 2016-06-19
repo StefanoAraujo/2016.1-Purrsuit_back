@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'users/:id/unfollow_deputy' => 'users#unfollow_deputy', format: :json
   put 'users/:id/update' => 'users#update', format: :json, as: :users_update
   delete 'users/delete/:id' => 'users#delete', as: :users_delete
+  get 'users/:id/receive_quests' => 'users#receive_quests'
 
   get 'deputies/all' => 'deputies#all', format: :json
   get 'deputies/new' => 'deputies#new'
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
 	delete 'achievements/:id' => 'achievements#delete', as: :achievements_delete
 
   get 'quests/all' => 'quests#all', format: :json, as: :quests_all
+  get 'quests/doing' => 'quests#received_quests'
 	get 'quests/new' => 'quests#new', format: :json, as: :quests_new
 	post 'quests/create' => 'quests#create', as: :quests
 	get 'quests/:id' => 'quests#show', format: :json

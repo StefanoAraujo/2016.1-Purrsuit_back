@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
                                 dependent: :destroy
   has_many :challengers, through: :quests_relationships, source: :challenger
 
+  has_many :quests
+
   has_secure_password
 
   validates :email, presence: true, length: {maximum: 255}
@@ -49,5 +51,5 @@ class User < ActiveRecord::Base
   def doing?(quest)
     challengers.include?(quest)
   end
-  
+
 end

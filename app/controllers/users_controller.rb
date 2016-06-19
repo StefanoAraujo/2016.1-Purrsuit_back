@@ -103,6 +103,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def receive_quests
+    user = User.find_by(id: params[:userId])
+    questsAmount = params[:questsAmount]
+
+    if user.challengers.length < 3
+      allQuests = []
+      Quest.all.each do |quest|
+        allQuests << quest if !user.doing?(quest) || !user.quests.include?(quest)
+      end
+
+      questsAmount.times do
+        random = allQuests.sample
+        user.receive_quest(random)
+        allQuests.delete(random)
+      end
+    end
+  end
+
   private
     def user_params
       params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :level_id, :uf_id)

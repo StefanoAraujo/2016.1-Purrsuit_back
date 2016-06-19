@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617030629) do
+ActiveRecord::Schema.define(version: 20160617182654) do
 
   create_table "achievements", force: :cascade do |t|
   end
@@ -82,7 +82,10 @@ ActiveRecord::Schema.define(version: 20160617030629) do
   add_index "quest_relationships", ["challenger_id"], name: "index_quest_relationships_on_challenger_id"
 
   create_table "quests", force: :cascade do |t|
+    t.integer "user_id"
   end
+
+  add_index "quests", ["user_id"], name: "index_quests_on_user_id"
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"

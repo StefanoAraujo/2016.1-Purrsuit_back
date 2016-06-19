@@ -59,6 +59,16 @@ class QuestsController < ApplicationController
 		redirect_to :quests_all
 	end
 
+	def received_quests
+		user_id = params[:userId]
+		user = User.find_by(id: user_id)
+		received_quests = user.challengers
+		if user.challengers.length > 0
+			render json: received_quests
+		else
+			raise "ERROR"
+		end
+	end
 
 	private
 
