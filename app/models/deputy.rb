@@ -2,6 +2,7 @@ class Deputy < ActiveRecord::Base
   acts_as :person
   belongs_to :uf
 	belongs_to :party
+  belongs_to :spent
 
   has_many :passive_relationships, class_name: "Relationship",
                                    foreign_key: "followed_id",
