@@ -31,7 +31,7 @@ describe DeputiesController do
       expect(assigns(:deputy)).to eq @deputy
     end
     it "returns json deputy" do
-      deputy_json = DeputySerializer.new(@deputy).to_json
+      deputy_json = DeputyDetailsSerializer.new(@deputy).to_json
       get 'show', :id => @deputy.id
       expect(response.body).to have_content deputy_json
     end
