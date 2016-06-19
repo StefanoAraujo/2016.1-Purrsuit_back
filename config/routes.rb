@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   get 'users/all' => 'users#all', format: :json, as: :users_all
   get 'users/new' => 'users#new'
+  get 'users/ranking' => 'users#ranking', format: :json
   post 'users/create' => 'users#create', format: :json
   get 'users/:id' => 'users#show', format: :json
   get 'users/:id/edit' => 'users#edit', format: :json, as: :users_edit
   post 'users/:id/follow_deputy' => 'users#follow_deputy', format: :json
   post 'users/:id/unfollow_deputy' => 'users#unfollow_deputy', format: :json
-  put 'users/:id/update' => 'users#update', format: :json, as: :users_update
+  post 'users/:id/update' => 'users#update', format: :json, as: :users_update
   delete 'users/delete/:id' => 'users#delete', as: :users_delete
   get 'users/:id/receive_quests' => 'users#receive_quests'
 
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
   post 'achievements/create' => 'achievements#create', as: :achievements
   get 'achievements/:id' => 'achievements#show', format: :json
   get 'achievements/:id/edit' => 'achievements#edit', format: :json, as: :achievements_edit
-  put 'achievements/:id/update' => 'achievements#update',as: :achievements_update
+  post 'achievements/:id/update' => 'achievements#update',as: :achievements_update
 	delete 'achievements/:id' => 'achievements#delete', as: :achievements_delete
 
   get 'quests/all' => 'quests#all', format: :json, as: :quests_all
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
 	get 'quests/new' => 'quests#new', format: :json, as: :quests_new
 	post 'quests/create' => 'quests#create', as: :quests
 	get 'quests/:id' => 'quests#show', format: :json
-	put 'quests/:id/update' => 'quests#update', format: :json, as: :quests_update
+	post 'quests/:id/update' => 'quests#update', format: :json, as: :quests_update
 	get 'quests/:id/edit' => 'quests#edit', format: :json, as: :quests_edit
 	delete 'quests/:id' => 'quests#delete', as: :quests_delete
 

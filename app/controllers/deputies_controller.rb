@@ -19,7 +19,7 @@ class DeputiesController < ApplicationController
     else
       raise "ERROR"
     end
-    render json: @deputy
+    render json: @deputy, serializer: DeputyDetailsSerializer
   end
 
   def search

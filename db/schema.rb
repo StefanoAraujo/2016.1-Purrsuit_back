@@ -11,16 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617182654) do
+ActiveRecord::Schema.define(version: 20160619122704) do
 
   create_table "achievements", force: :cascade do |t|
-  end
-
-  create_table "cabinets", force: :cascade do |t|
-    t.string   "phone"
-    t.string   "annex"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "deputies", force: :cascade do |t|
@@ -31,6 +24,18 @@ ActiveRecord::Schema.define(version: 20160617182654) do
     t.string  "image_path"
     t.integer "party_id"
     t.integer "uf_id"
+    t.integer "spent_id"
+  end
+
+  create_table "expense_types", force: :cascade do |t|
+    t.string  "expense_description"
+    t.string  "provider"
+    t.string  "provider_registration"
+    t.string  "ticket_number"
+    t.string  "issue_date"
+    t.float   "doc_value"
+    t.float   "net_value"
+    t.integer "spent_id"
   end
 
   create_table "gamifications", force: :cascade do |t|
@@ -98,6 +103,18 @@ ActiveRecord::Schema.define(version: 20160617182654) do
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
+  create_table "spents", force: :cascade do |t|
+    t.string "deputy_name_spent"
+    t.float  "total_value"
+    t.float  "office_cost"
+    t.float  "gas_cost"
+    t.float  "ad_cost"
+    t.float  "phone_cost"
+    t.float  "postal_cost"
+    t.float  "vehicle_tenancy"
+    t.float  "air_ticket"
+  end
+
   create_table "ufs", force: :cascade do |t|
     t.string   "name"
     t.string   "initials"
@@ -110,6 +127,7 @@ ActiveRecord::Schema.define(version: 20160617182654) do
     t.string  "password_digest"
     t.integer "experience_points", default: 0,     null: false
     t.boolean "role_admin",        default: false, null: false
+    t.integer "quest_id"
     t.integer "uf_id"
     t.integer "level_id",          default: 1
   end

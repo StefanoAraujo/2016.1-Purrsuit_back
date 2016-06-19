@@ -20,7 +20,7 @@
     <div class="principalSquare">
     <% if current_user && current_user.admin? %>
       <div class="listSquare">
-        <%= form_for :user, url: users_update_path, method: :put do | form | %>
+        <%= form_for :user, url: users_update_path, method: :post do | form | %>
           <%= form.text_field :nickname, :class => "gamification_fields", :placeholder => "User's nickname"%>
           <%= form.text_field :email, :class => "gamification_fields", :placeholder => "Email" %>
           <%= form.submit "Save", :id => "gamification_button", :class => "btn btn-default btn-xs"%>

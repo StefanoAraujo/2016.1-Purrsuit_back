@@ -2,6 +2,7 @@ class Deputy < ActiveRecord::Base
   acts_as :person
   belongs_to :uf
 	belongs_to :party
+  belongs_to :spent
 
   has_many :passive_relationships, class_name: "Relationship",
                                    foreign_key: "followed_id",
@@ -19,7 +20,7 @@ class Deputy < ActiveRecord::Base
   validates :legislation_situation, presence: true, length: {maximum: 100}
   validates :email, presence:true
 
-# :nocov:
+#:nocov:
   def self.parse_deputies
     response = Parser.request_xml("http://www.camara.leg.br/SitCamaraWS/Deputados.asmx/ObterDeputados")
     xml_doc = Parser.get_xml response, 'DEPUTADOS', 'xml/deputies.xml'
@@ -57,5 +58,5 @@ class Deputy < ActiveRecord::Base
       end
     end
   end
-# :nocov:
+  #:nocov:
 end

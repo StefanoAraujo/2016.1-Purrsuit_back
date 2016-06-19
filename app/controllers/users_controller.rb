@@ -9,6 +9,18 @@ class UsersController < ApplicationController
 		end
   end
 
+  def ranking
+    @users = User.all
+    ranking = @users.sort_by do |user|
+      -user[:experience_points]
+    end
+    result = []
+    ranking[0..9].each do |user|
+      result << user
+    end
+    render json: result
+  end
+
   def show
     id_user = params[:id]
         users = User.where(id: id_user)
@@ -57,8 +69,11 @@ class UsersController < ApplicationController
     user_id = params[:id]
     users = User.where(id: user_id)
     @user = users.first
-    @user.update(user_params)
-    render json: @user
+    @user.update(user_update_params)
+    respond_to do |format|
+      format.html {redirect_to :users_all}
+      format.json {render json: @user}
+    end
   end
 
   def delete
@@ -123,6 +138,10 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :level_id, :uf_id)
+      params.require(:user).permit(:nickname, :email, :password, :password_confirmation)
+    end
+
+    def user_update_params
+      params.require(:user).permit(:name, :nickname, :email, :password, :gender, :age, :level_id, :uf_id)
     end
 end

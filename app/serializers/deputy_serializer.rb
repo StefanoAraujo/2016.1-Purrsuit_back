@@ -1,7 +1,6 @@
 class DeputySerializer < ActiveModel::Serializer
 
-attributes :id, :name, :gender, :email, :age, :deputy_name, :registration,
-:legislation_situation,:followers_count, :image_path, :uf, :party
+attributes :id, :name, :deputy_name, :image_path, :uf, :party
 
 	private
 	def uf
