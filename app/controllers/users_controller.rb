@@ -55,8 +55,7 @@ class UsersController < ApplicationController
 
   def update
     user_id = params[:id]
-    users = User.where(id: user_id)
-    @user = users.first
+    @user = User.find_by(id: user_id)
     @user.update(user_update_params)
     respond_to do |format|
       format.html {redirect_to :users_all}
@@ -112,6 +111,7 @@ class UsersController < ApplicationController
     end
 
     def user_update_params
-      params.require(:user).permit(:name, :nickname, :email, :password, :gender, :age, :level_id, :uf_id)
+      params.require(:user).permit(:name, :nickname, :experience_points, :email,
+      :password, :gender, :age, :level, :uf_id)
     end
 end
