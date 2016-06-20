@@ -9,6 +9,18 @@ class UsersController < ApplicationController
 		end
   end
 
+  def ranking
+    @users = User.all
+    ranking = @users.sort_by do |user|
+      -user[:experience_points]
+    end
+    result = []
+    ranking[0..9].each do |user|
+      result << user
+    end
+    render json: result
+  end
+
   def show
     id_user = params[:id]
         users = User.where(id: id_user)

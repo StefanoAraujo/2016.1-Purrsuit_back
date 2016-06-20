@@ -18,6 +18,13 @@ describe UsersController do
     end
   end
 
+	describe 'GET #ranking' do
+		it "return an users array" do
+			get :ranking
+			expect(response.body).to be_truthy
+		end
+	end
+
   describe 'GET #new' do
     it "assigns a new User to @user" do
       get :new
