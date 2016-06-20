@@ -119,20 +119,23 @@ class UsersController < ApplicationController
   end
 
   def receive_quests
-    user = User.find_by(id: params[:userId])
+    user_id = params[:userId]
+    user = User.find_by(id: user_id)
     questsAmount = params[:questsAmount]
 
-    if user.challengers.length < 3
+    if user && user.challengers.length < 3
       allQuests = []
       Quest.all.each do |quest|
         allQuests << quest if !user.doing?(quest) || !user.quests.include?(quest)
       end
 
-      questsAmount.times do
+      questsAmount.to_i.times do
         random = allQuests.sample
         user.receive_quest(random)
         allQuests.delete(random)
       end
+
+      render :nothing => true
     end
   end
 

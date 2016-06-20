@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'users/all' => 'users#all', format: :json, as: :users_all
   get 'users/new' => 'users#new'
+  get 'users/receivequests' => 'users#receive_quests', format: :json
   get 'users/ranking' => 'users#ranking', format: :json
   post 'users/create' => 'users#create', format: :json
   get 'users/:id' => 'users#show', format: :json
@@ -9,7 +10,6 @@ Rails.application.routes.draw do
   post 'users/:id/unfollow_deputy' => 'users#unfollow_deputy', format: :json
   post 'users/:id/update' => 'users#update', format: :json, as: :users_update
   delete 'users/delete/:id' => 'users#delete', as: :users_delete
-  get 'users/:id/receive_quests' => 'users#receive_quests'
 
   get 'deputies/all' => 'deputies#all', format: :json
   get 'deputies/new' => 'deputies#new'

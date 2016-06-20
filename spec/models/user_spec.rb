@@ -28,5 +28,8 @@ describe User do
     expect(user.following?(deputy_example)).to be  false
   end
 
+  it "Should have a relationship with quests" do
+    
+  end
 
 end
