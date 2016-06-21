@@ -1,4 +1,4 @@
 class Spent < ActiveRecord::Base
-  has_one :deputy
+  belongs_to :deputy
   has_many :expense_types
 end

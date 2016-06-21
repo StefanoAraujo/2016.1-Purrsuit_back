@@ -16,7 +16,7 @@ class Parser
       puts "Alimentando base de dados dos "+ type +" a partir do webservice..."
     else
       xml_doc = Nokogiri::XML(File.open(file))
-      puts "WebService dos "+ type +" inacessível.\nAlimentado base de dados dos DEPUTADOS a partir de backup..."
+      puts "WebService dos "+ type +" inacessível.\nAlimentado base de dados dos " + type + " a partir de backup..."
     end
     return xml_doc
   end

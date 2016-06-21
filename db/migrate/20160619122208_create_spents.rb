@@ -1,6 +1,7 @@
 class CreateSpents < ActiveRecord::Migration
   def change
     create_table :spents do |t|
+      t.belongs_to :deputy, index: true
       t.string :deputy_name_spent
       t.float :total_value
       t.float :office_cost

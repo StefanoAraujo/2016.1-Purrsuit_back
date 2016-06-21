@@ -6,7 +6,7 @@ attributes :id, :name, :gender, :email, :age, :deputy_name, :registration,
 
   	private
   	def uf
-  	UfSerializer.new(object.uf).attributes
+  	     UfSerializer.new(object.uf).attributes
   	end
   	def party
   		PartySerializer.new(object.party).attributes

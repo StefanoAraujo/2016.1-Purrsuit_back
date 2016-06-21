@@ -2,7 +2,7 @@ class Deputy < ActiveRecord::Base
   acts_as :person
   belongs_to :uf
 	belongs_to :party
-  belongs_to :spent
+  has_one :spent
 
   has_many :passive_relationships, class_name: "Relationship",
                                    foreign_key: "followed_id",
@@ -54,6 +54,7 @@ class Deputy < ActiveRecord::Base
       if deputy.save
         Uf.find_by_initials(uf).add_deputy(deputy)
         Party.find_by_initials(partido).add_deputy(deputy)
+        deputy.create_spent(:deputy_name_spent => nomeParlamentar, :office_cost => 0, :gas_cost => 0, :ad_cost => 0, :phone_cost => 0, :postal_cost => 0, :vehicle_tenancy => 0, :air_ticket => 0)
         puts "Deputado " + nomeParlamentar + " salvo."
       end
     end
