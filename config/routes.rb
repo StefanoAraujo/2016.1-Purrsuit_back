@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'users/all' => 'users#all', format: :json, as: :users_all
   get 'users/new' => 'users#new'
+  get 'users/receivequests' => 'users#receive_quests', format: :json
   get 'users/ranking' => 'users#ranking', format: :json
   post 'users/create' => 'users#create', format: :json
   get 'users/:id' => 'users#show', format: :json
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
 	delete 'achievements/:id' => 'achievements#delete', as: :achievements_delete
 
   get 'quests/all' => 'quests#all', format: :json, as: :quests_all
+  get 'quests/doing' => 'quests#received_quests'
 	get 'quests/new' => 'quests#new', format: :json, as: :quests_new
 	post 'quests/create' => 'quests#create', as: :quests
 	get 'quests/:id' => 'quests#show', format: :json

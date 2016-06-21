@@ -6,7 +6,8 @@ class Quest < ActiveRecord::Base
 																dependent: :destroy
 
 	has_many :challengeds, through: :user_relationships, source: :challenged
-	
+
+	belongs_to :user
 # :nocov:
 	def self.parse_quests
 		quests = [["Seguir 10 deputados", 100, "Siga 10 deputados"],

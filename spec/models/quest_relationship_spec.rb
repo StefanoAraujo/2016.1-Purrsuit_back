@@ -1,5 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe QuestRelationship, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+require 'spec_helper'
+require 'faker'
+require 'deputy.rb'
+
+
+
+describe QuestRelationship do
+
+  it "Has valid factory" do
+    expect(build(:quest)).to be_valid
+  end
+
 end
