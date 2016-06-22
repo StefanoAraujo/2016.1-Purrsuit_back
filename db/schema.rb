@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160619122704) do
+ActiveRecord::Schema.define(version: 20160622041555) do
 
   create_table "achievements", force: :cascade do |t|
   end
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 20160619122704) do
     t.integer "quest_id"
     t.integer "uf_id"
     t.integer "level_id",          default: 1
+    t.string  "last_acess"
   end
 
 end
