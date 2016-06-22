@@ -7,6 +7,9 @@ env:
 addons:
   code_climate:
     repo_token: 3c579ab336b804379c97fcc7a18d58a9cf87084e7e05b24c97c22035b40122ae
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database travis_ci_test;' -U postgres
 after_success:
   - "curl -o /tmp/travis-automerge https://raw.githubusercontent.com/cdown/travis-automerge/master/travis-automerge"
   - "chmod a+x /tmp/travis-automerge"
