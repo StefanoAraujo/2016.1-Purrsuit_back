@@ -2,6 +2,7 @@ class Spent < ActiveRecord::Base
   belongs_to :deputy
   has_many :expense_types
 
+#:nocov:
   def add_expense expense
     self.expense_types << expense
   end
@@ -71,6 +72,8 @@ class Spent < ActiveRecord::Base
   def total_participation_cost?
     return subquota_total ['137']
   end
+
+#:nocov:
 
 end
 
