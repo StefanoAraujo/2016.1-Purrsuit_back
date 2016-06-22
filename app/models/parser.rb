@@ -1,3 +1,4 @@
+require 'zip'
 class Parser
 
   def self.request_xml http_link
@@ -23,6 +24,19 @@ class Parser
 
   def self.save_xml xml_doc, file
     File.open(file, 'w') {|f| f.write xml_doc}
+  end
+
+  def self.download_zip url
+    open('xml/AnoAtual.zip', 'wb') do |fo|
+      fo.print open(url).read
+    end
+  end
+
+  def self.extract_zip path
+    Zip::File.open(path) do |zf|
+      entry = zf.glob('*.xml').first
+      zf.extract(entry, 'xml/expenses.xml') unless File.exist?('xml/expenses.xml')
+    end
   end
 
 end

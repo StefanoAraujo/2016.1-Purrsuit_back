@@ -2,8 +2,12 @@ class ExpenseType < ActiveRecord::Base
   belongs_to :spent
 
   def self.parse_expenses
+      Parser.download_zip "http://www.camara.gov.br/cotas/AnoAtual.zip"
+      Parser.extract_zip 'xml/AnoAtual.zip'
       xml_doc = Parser.get_xml false, 'DESPESAS', 'xml/expenses.xml'
       ExpenseType.save_expenses(xml_doc)
+      File.delete('xml/expenses.xml')
+      File.delete('xml/AnoAtual.zip')
   end
 
   def self.save_expenses xml_doc

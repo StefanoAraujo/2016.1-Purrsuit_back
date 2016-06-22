@@ -9346,27 +9346,6 @@
     </comissoes>
   </deputado>
   <deputado>
-    <ideCadastro>178882</ideCadastro>
-    <codOrcamento>3046</codOrcamento>
-    <condicao>Titular</condicao>
-    <matricula>72</matricula>
-    <idParlamentar>5830768</idParlamentar>
-    <nome>ANDRE LUIS CARVALHO RIBEIRO</nome>
-    <nomeParlamentar>ANDRÉ FUFUCA</nomeParlamentar>
-    <urlFoto>http://www.camara.gov.br/internet/deputado/bandep/178882.jpg</urlFoto>
-    <sexo>masculino</sexo>
-    <uf>MA</uf>
-    <partido>PP</partido>
-    <gabinete>945</gabinete>
-    <anexo>4</anexo>
-    <fone>3215-5945</fone>
-    <email>dep.andrefufuca@camara.gov.br</email>
-    <comissoes>
-      <titular/>
-      <suplente/>
-    </comissoes>
-  </deputado>
-  <deputado>
     <ideCadastro>74040</ideCadastro>
     <codOrcamento>1268</codOrcamento>
     <condicao>Titular</condicao>
@@ -10747,6 +10726,27 @@
     <anexo>4</anexo>
     <fone>3215-5760</fone>
     <email>dep.valamelio@camara.gov.br</email>
+    <comissoes>
+      <titular/>
+      <suplente/>
+    </comissoes>
+  </deputado>
+  <deputado>
+    <ideCadastro>194592</ideCadastro>
+    <codOrcamento/>
+    <condicao>Suplente</condicao>
+    <matricula>581</matricula>
+    <idParlamentar>5830900</idParlamentar>
+    <nome>ILDON MARQUES DE SOUZA</nome>
+    <nomeParlamentar>ILDON MARQUES</nomeParlamentar>
+    <urlFoto>http://www.camara.gov.br/internet/deputado/bandep/194592.jpg</urlFoto>
+    <sexo>masculino</sexo>
+    <uf>MA</uf>
+    <partido>PSB</partido>
+    <gabinete>945</gabinete>
+    <anexo>4</anexo>
+    <fone>3215-5945</fone>
+    <email>dep.ildonmarques@camara.gov.br</email>
     <comissoes>
       <titular/>
       <suplente/>

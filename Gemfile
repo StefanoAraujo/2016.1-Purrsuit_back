@@ -27,7 +27,7 @@ gem 'active_record-acts_as'
 # Integration with ionic
 gem 'rack-cors', :require => 'rack/cors'
 gem 'active_model_serializers'
-
+gem 'rubyzip'
 
 
 group :development, :test do

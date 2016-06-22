@@ -105,20 +105,6 @@ ActiveRecord::Schema.define(version: 20160619122704) do
 
   create_table "spents", force: :cascade do |t|
     t.integer "deputy_id"
-    t.float   "total_value"
-    t.float   "air_ticket_cost"
-    t.float   "phone_cost"
-    t.float   "postal_cost"
-    t.float   "office_cost"
-    t.float   "alimentation_cost"
-    t.float   "accommodation_cost"
-    t.float   "vehicle_tenancy_cost"
-    t.float   "gas_cost"
-    t.float   "security_cost"
-    t.float   "contract_cost"
-    t.float   "advertising_cost"
-    t.float   "participation_cost"
-    t.float   "housing_assistance_gost"
   end
 
   add_index "spents", ["deputy_id"], name: "index_spents_on_deputy_id"
