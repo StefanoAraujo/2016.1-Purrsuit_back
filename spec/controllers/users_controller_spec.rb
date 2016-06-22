@@ -20,8 +20,14 @@ describe UsersController do
 
 	describe 'GET #ranking' do
 		it "return an users array" do
-			get :ranking
-			expect(response.body).to be_truthy
+      user_one = create(:user, experience_points:100)
+      user_two = create(:user, experience_points:200)
+      user_three = create(:user, experience_points:300)
+      user_four = create(:user, experience_points:400)
+      user_ranking = User.order(:experience_points)
+      user_ranking_json = user_ranking.map{|user| UserSerializer.new(user)}.to_json
+      get :ranking
+			expect(response.body).to match(user_ranking_json)
 		end
 	end
 

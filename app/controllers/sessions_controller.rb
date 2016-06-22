@@ -1,15 +1,11 @@
 class SessionsController < ApplicationController
 
-  def new
-  end
-
   def create
-    user = user = User.find_by(email: params[:session][:email])
+    @user = User.find_by(email: params[:session][:email])
     begin
-      if user && user.authenticate(params[:session][:password])
-        session[:user_id] = user.id
+      if @user && @user.authenticate(params[:session][:password])
+        session[:user_id] = @user.id
         puts "login successfull!"
-        puts user
         redirect_to :achievements_all
       else
         raise "login failed!"

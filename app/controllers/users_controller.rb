@@ -12,10 +12,10 @@ class UsersController < ApplicationController
   def ranking
     @users = User.all
     ranking = @users.sort_by do |user|
-      -user[:experience_points]
+      [-user.experience_points, user.nickname]
     end
     result = []
-    ranking[0..9].each do |user|
+    ranking[0..19].each do |user|
       result << user
     end
     render json: result
