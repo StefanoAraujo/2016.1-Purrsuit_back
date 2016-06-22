@@ -59,6 +59,7 @@ class QuestsController < ApplicationController
 		redirect_to :quests_all
 	end
 
+#:nocov:
 	def received_quests
 		user_id = params[:userId]
 		user = User.find_by(id: user_id)
@@ -69,6 +70,7 @@ class QuestsController < ApplicationController
 			raise "ERROR"
 		end
 	end
+#:nocov:
 
 	private
 
