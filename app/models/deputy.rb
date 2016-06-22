@@ -20,6 +20,10 @@ class Deputy < ActiveRecord::Base
   validates :legislation_situation, presence: true, length: {maximum: 100}
   validates :email, presence:true
 
+  def total_cost
+    self.spent.total_cost_value?
+  end
+
 #:nocov:
   def self.parse_deputies
     response = Parser.request_xml("http://www.camara.leg.br/SitCamaraWS/Deputados.asmx/ObterDeputados")

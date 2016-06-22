@@ -12,8 +12,4 @@ attributes :id, :name, :gender, :email, :age, :deputy_name, :registration,
     def party
   		PartySerializer.new(object.party).attributes
   	end
-
-    def total_cost
-      object.spent.total_cost_value?
-    end
 end
