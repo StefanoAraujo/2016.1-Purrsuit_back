@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root to: 'sessions#new'
+
   get 'users/all' => 'users#all', format: :json, as: :users_all
   get 'users/new' => 'users#new'
   get 'users/receivequests' => 'users#receive_quests', format: :json
