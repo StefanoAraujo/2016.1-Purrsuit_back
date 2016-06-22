@@ -8,9 +8,27 @@ addons:
   code_climate:
     repo_token: 3c579ab336b804379c97fcc7a18d58a9cf87084e7e05b24c97c22035b40122ae
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
 after_success:
-  - "curl -o /tmp/travis-automerge https://raw.githubusercontent.com/cdown/travis-automerge/master/travis-automerge"
-  - "chmod a+x /tmp/travis-automerge"
-  - "BRANCHES_TO_MERGE_REGEX='^issue#' BRANCH_TO_MERGE_INTO=desenvolvimento GITHUB_REPO=PurrSuit/backend_purrsuit /tmp/travis-automerge"
+- curl -o /tmp/travis-automerge https://raw.githubusercontent.com/cdown/travis-automerge/master/travis-automerge
+- chmod a+x /tmp/travis-automerge
+- BRANCHES_TO_MERGE_REGEX='^issue#' BRANCH_TO_MERGE_INTO=desenvolvimento GITHUB_REPO=PurrSuit/backend_purrsuit
+  /tmp/travis-automerge
+deploy:
+  provider: heroku
+  api_key:
+    secure: oasBGSnTGQR7dtnk6ttF94E7dBr7AzAionKHdxt1FuhIVCk8gc1gE9pAzgWIxnZq1azll0kym3mfkiiDB52i/VYNE+WDJ0Z+k6tSz1YTwt1+vRkDBYARVmRXkLoBNWTIMU2CzrXY4igXEXZtkU7RafM/r99OUklVOcMMCy0mGDwnc7U3fZLXTm3hmx0xgs78VD6oTSkQRWnumpqkQs70EVzYfdH/piciz1xjcPN/WB+TN/GwMynCaXszO5cNjULXFxvvzPrcK5EZ29mDfZs9509EwV3nLRmHr4Y8c8nimlcgpmAtLX9GwCZzcdPfAFSP0/Wmt2bRBSJ6pBmEiEKk5I7Z7KA7X5Gg53Dwp+fEdjexEdhF+ewKedwk0FXMxjEblOA76WVgcwoW5onIP3Jv09Rd5WByl0AHPPztrd+2IOKxSrtAXK/2B5onIJ2T8aDshD6eOCzir5AU0203a9Pl/QbecuGs+vFwqlEgKgjSWGav+UMrh7iTPAHJQfHLfq+5B5lSsY1pD7o0sr58twwzFBVFBlgqIHixtkGhLoc/f6Yh+I/5oE1JP8oPTI2/DKLDpO/oHqGkZapjBS66mnlGAn+s00UgGczjqGCR66zv3i0pvif9bg/g5qDEOZUBWeNg+7gp7firQufmIsMpJeH9tD8zOJD6InmA1DEtkF4vj+Q=
+  app:
+    master: purrsuit-production
+    desenvolvimento: purrsuit-staging
+  run:
+    - "rake db:drop"
+    - "rake db:create"
+    - "rake db:migrate"
+    - "rake parse:deputies"
+    - "rake parse:levels"
+  on:
+    branch: master
+    run:
+      - "rake parse:expenses"
