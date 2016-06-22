@@ -29,7 +29,14 @@ describe User do
   end
 
   it "Should have a relationship with quests" do
-    
+    user = create(:user)
+    quest_example = create (:quest)
+    expect(user.doing?(quest_example)).to be false
+    user.receive_quest(quest_example)
+    expect(user.doing?(quest_example)).to be true
+    expect(quest_example.challengeds.include?(user)).to be true
+    user.complete_quest(quest_example)
+    expect(user.doing?(quest_example)).to be false
   end
 
 end

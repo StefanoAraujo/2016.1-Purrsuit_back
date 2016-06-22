@@ -59,16 +59,14 @@ class QuestsController < ApplicationController
 		redirect_to :quests_all
 	end
 
+#:nocov:
 	def received_quests
 		user_id = params[:userId]
 		user = User.find_by(id: user_id)
 		received_quests = user.challengers
-		if user.challengers
-			render json: received_quests
-		else
-			raise "ERROR"
-		end
+		render json: received_quests
 	end
+#:nocov:
 
 	private
 

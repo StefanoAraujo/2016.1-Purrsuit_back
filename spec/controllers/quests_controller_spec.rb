@@ -5,6 +5,7 @@ describe QuestsController do
 	#Missing #edit #all #show
 
 	before :each do
+		@user = create(:user)
 		@quest = create(:quest)
 	end
 
@@ -62,7 +63,7 @@ describe QuestsController do
 			}.to change(Quest, :count).by(-1)
 		end
 	end
-	
+
 	describe 'GET #edit' do
 		it "should return sucess" do
 			post :edit, id: @quest
@@ -83,4 +84,11 @@ describe QuestsController do
 			).to render_template(:edit)
 		end
 	end
+
+	describe 'GET #received_quests' do
+		it "shows received quests from a user" do
+
+		end
+	end
+
 end
