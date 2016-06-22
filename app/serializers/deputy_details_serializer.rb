@@ -2,14 +2,18 @@ class DeputyDetailsSerializer < ActiveModel::Serializer
 
 
 attributes :id, :name, :gender, :email, :age, :deputy_name, :registration,
-:legislation_situation,:followers_count, :image_path, :uf, :party
+:legislation_situation,:followers_count, :image_path, :uf, :party, :total_cost
 
   	private
   	def uf
-  	     UfSerializer.new(object.uf).attributes
+      UfSerializer.new(object.uf).attributes
   	end
-  	def party
+
+    def party
   		PartySerializer.new(object.party).attributes
   	end
 
+    def total_cost
+      object.spent.total_cost_value?
+    end
 end
