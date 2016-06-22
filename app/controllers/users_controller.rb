@@ -12,10 +12,10 @@ class UsersController < ApplicationController
   def ranking
     @users = User.all
     ranking = @users.sort_by do |user|
-      -user[:experience_points]
+      [-user.experience_points, user.nickname]
     end
     result = []
-    ranking[0..9].each do |user|
+    ranking[0..19].each do |user|
       result << user
     end
     render json: result
@@ -116,6 +116,29 @@ class UsersController < ApplicationController
       redirect_to 'login'
     end
   end
+
+#:nocov:
+  def receive_quests
+    user_id = params[:userId]
+    user = User.find_by(id: user_id)
+    questsAmount = params[:questsAmount]
+
+    if user && user.challengers.length < 3
+      allQuests = []
+      Quest.all.each do |quest|
+        allQuests << quest if !user.doing?(quest) || !user.quests.include?(quest)
+      end
+
+      questsAmount.to_i.times do
+        random = allQuests.sample
+        user.receive_quest(random)
+        allQuests.delete(random)
+      end
+
+      render :nothing => true
+    end
+  end
+#:nocov:
 
   private
     def user_params

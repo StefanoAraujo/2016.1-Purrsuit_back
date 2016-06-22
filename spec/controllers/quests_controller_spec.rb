@@ -62,7 +62,7 @@ describe QuestsController do
 			}.to change(Quest, :count).by(-1)
 		end
 	end
-	
+
 	describe 'GET #edit' do
 		it "should return sucess" do
 			post :edit, id: @quest
@@ -82,5 +82,7 @@ describe QuestsController do
 				patch 'update', id: @quest, quest: attributes_for(:quest, name: nil)
 			).to render_template(:edit)
 		end
+		
 	end
+
 end

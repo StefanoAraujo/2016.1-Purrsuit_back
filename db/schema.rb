@@ -87,7 +87,10 @@ ActiveRecord::Schema.define(version: 20160619122704) do
   add_index "quest_relationships", ["challenger_id"], name: "index_quest_relationships_on_challenger_id"
 
   create_table "quests", force: :cascade do |t|
+    t.integer "user_id"
   end
+
+  add_index "quests", ["user_id"], name: "index_quests_on_user_id"
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
@@ -132,6 +135,7 @@ ActiveRecord::Schema.define(version: 20160619122704) do
     t.string  "password_digest"
     t.integer "experience_points", default: 0,     null: false
     t.boolean "role_admin",        default: false, null: false
+    t.integer "quest_id"
     t.integer "uf_id"
     t.integer "level_id",          default: 1
   end
