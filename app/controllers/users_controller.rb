@@ -102,32 +102,7 @@ class UsersController < ApplicationController
     user.unfollow(deputy)
     render :nothing => true
   end
-#:nocov:
-  def receive_quests
-    user_id = params[:userId]
-    @user = User.find_by(id: user_id)
-    questsAmount = params[:questsAmount]
-    maxquests = 3
 
-    if @user && @user.challengers.length < maxquests
-      allQuests = []
-      Quest.all.each do |quest|
-        allQuests << quest if !@user.doing?(quest) || !@user.quests.include?(quest)
-      end
-
-
-
-      questsAmount.to_i.times do
-        random = allQuests.sample
-        @user.receive_quest(random)
-        allQuests.delete(random)
-      end
-
-
-    end
-    render :nothing => true
-  end
-#:nocov:
   def ionic_login
     @user = User.find_by(email: params[:email])
     begin
@@ -139,6 +114,27 @@ class UsersController < ApplicationController
     rescue RuntimeError => error_login
       puts "#{error_login}"
       redirect_to 'login'
+    end
+  end
+
+  def receive_quests
+    user_id = params[:userId]
+    user = User.find_by(id: user_id)
+    questsAmount = params[:questsAmount]
+
+    if user && user.challengers.length < 3
+      allQuests = []
+      Quest.all.each do |quest|
+        allQuests << quest if !user.doing?(quest) || !user.quests.include?(quest)
+      end
+
+      questsAmount.to_i.times do
+        random = allQuests.sample
+        user.receive_quest(random)
+        allQuests.delete(random)
+      end
+
+      render :nothing => true
     end
   end
 

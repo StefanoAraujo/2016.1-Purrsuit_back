@@ -11,6 +11,5 @@ FactoryGirl.define do
     role_admin false
     level_id 1
     uf_id 1
-    quest_id 1 
   end
 end

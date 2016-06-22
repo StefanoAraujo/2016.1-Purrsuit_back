@@ -95,7 +95,9 @@ describe UsersController do
       post :follow_deputy, id:@user, userId:@user, deputyId:@deputy
       expect(@user.following?(@deputy)).to eq true
       expect(@deputy.followers_count).to eq 1
+
     end
+
   end
 
   describe 'GET #unfollow_deputy' do
@@ -107,13 +109,6 @@ describe UsersController do
 
     end
   end
-
-
-  describe 'GET #receive_quests' do
-    it "receive quests" do
-    end
-  end
-
 
   describe 'GET #ionic_login' do
       it "does a login" do
