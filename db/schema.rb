@@ -16,13 +16,6 @@ ActiveRecord::Schema.define(version: 20160619122704) do
   create_table "achievements", force: :cascade do |t|
   end
 
-  create_table "cabinets", force: :cascade do |t|
-    t.string   "phone"
-    t.string   "annex"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "deputies", force: :cascade do |t|
     t.string  "deputy_name"
     t.integer "registration"
@@ -31,11 +24,11 @@ ActiveRecord::Schema.define(version: 20160619122704) do
     t.string  "image_path"
     t.integer "party_id"
     t.integer "uf_id"
-    t.integer "spent_id"
   end
 
   create_table "expense_types", force: :cascade do |t|
-    t.string  "expense_description"
+    t.string  "subquota"
+    t.string  "description"
     t.string  "provider"
     t.string  "provider_registration"
     t.string  "ticket_number"
@@ -108,16 +101,24 @@ ActiveRecord::Schema.define(version: 20160619122704) do
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
   create_table "spents", force: :cascade do |t|
-    t.string "deputy_name_spent"
-    t.float  "total_value"
-    t.float  "office_cost"
-    t.float  "gas_cost"
-    t.float  "ad_cost"
-    t.float  "phone_cost"
-    t.float  "postal_cost"
-    t.float  "vehicle_tenancy"
-    t.float  "air_ticket"
+    t.integer "deputy_id"
+    t.float   "total_value"
+    t.float   "air_ticket_cost"
+    t.float   "phone_cost"
+    t.float   "postal_cost"
+    t.float   "office_cost"
+    t.float   "alimentation_cost"
+    t.float   "accommodation_cost"
+    t.float   "vehicle_tenancy_cost"
+    t.float   "gas_cost"
+    t.float   "security_cost"
+    t.float   "contract_cost"
+    t.float   "advertising_cost"
+    t.float   "participation_cost"
+    t.float   "housing_assistance_gost"
   end
+
+  add_index "spents", ["deputy_id"], name: "index_spents_on_deputy_id"
 
   create_table "ufs", force: :cascade do |t|
     t.string   "name"

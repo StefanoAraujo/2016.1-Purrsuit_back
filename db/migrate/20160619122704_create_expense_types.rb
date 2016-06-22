@@ -1,7 +1,8 @@
 class CreateExpenseTypes < ActiveRecord::Migration
   def change
     create_table :expense_types do |t|
-      t.string :expense_description
+      t.string :subquota
+      t.string :description
       t.string :provider
       t.string :provider_registration
       t.string :ticket_number

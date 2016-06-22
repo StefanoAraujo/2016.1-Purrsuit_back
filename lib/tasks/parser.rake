@@ -21,4 +21,8 @@ namespace :parse do
   task levels: :environment do
     Level.parse_levels
   end
+
+  task expenses: :environment do
+      ExpenseType.parse_expenses      
+  end
 end

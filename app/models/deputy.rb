@@ -54,7 +54,7 @@ class Deputy < ActiveRecord::Base
       if deputy.save
         Uf.find_by_initials(uf).add_deputy(deputy)
         Party.find_by_initials(partido).add_deputy(deputy)
-        deputy.create_spent(:deputy_name_spent => nomeParlamentar, :office_cost => 0, :gas_cost => 0, :ad_cost => 0, :phone_cost => 0, :postal_cost => 0, :vehicle_tenancy => 0, :air_ticket => 0)
+        deputy.create_spent(:total_value => 0, :air_ticket_cost => 0, :phone_cost => 0, :postal_cost => 0, :office_cost => 0, :alimentation_cost => 0, :accommodation_cost => 0, :vehicle_tenancy_cost => 0, :gas_cost => 0, :security_cost => 0, :contract_cost => 0, :advertising_cost => 0, :participation_cost => 0, :housing_assistance_gost => 0)
         puts "Deputado " + nomeParlamentar + " salvo."
       end
     end
