@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post 'users/:id/update' => 'users#update', format: :json, as: :users_update
   delete 'users/delete/:id' => 'users#delete', as: :users_delete
 
+  get 'deputies/image/:id' => 'deputies#image'
   get 'deputies/all' => 'deputies#all', format: :json
   get 'deputies/new' => 'deputies#new'
   post 'deputies/create' => 'deputies#create', format: :json

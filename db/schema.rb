@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160622041555) do
     t.integer "registration"
     t.string  "legislation_situation"
     t.integer "followers_count",       default: 0, null: false
+    t.string  "image_url"
     t.string  "image_path"
     t.integer "party_id"
     t.integer "uf_id"

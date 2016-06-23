@@ -1,3 +1,6 @@
+require "open-uri"
+
+
 class Deputy < ActiveRecord::Base
   acts_as :person
   belongs_to :uf
@@ -23,6 +26,61 @@ class Deputy < ActiveRecord::Base
   def total_cost
     self.spent.total_cost_value?
   end
+
+  def total_office_cost
+    self.spent.total_office_cost?
+  end
+
+  def total_contract_cost
+    self.spent.total_contract_cost?
+  end
+
+  def total_gas_cost
+    self.spent.total_gas_cost?
+  end
+
+  def total_postal_cost
+    self.spent.total_postal_cost?
+  end
+
+  def total_advertising_cost
+    self.spent.total_advertising_cost?
+  end
+
+  def total_security_cost
+    self.spent.total_security_cost?
+  end
+
+  def total_air_ticket_cost
+    self.spent.total_air_ticket?
+  end
+
+  def total_phone_cost
+    self.spent.total_phone_cost?
+  end
+
+  def total_alimentation_cost
+    self.spent.total_alimentation_cost?
+  end
+
+  def total_accommodation_cost
+    self.spent.total_accommodation_cost?
+  end
+
+  def total_vehicle_tenancy_cost
+    self.spent.total_vehicle_tenancy?
+  end
+
+  def total_participation_cost
+    self.spent.total_participation_cost?
+  end
+
+
+
+
+
+
+
 
 #:nocov:
   def self.parse_deputies
@@ -51,7 +109,7 @@ class Deputy < ActiveRecord::Base
                             :deputy_name => nomeParlamentar,
                             :gender => sexo,
                             :email => email,
-                            :image_path => urlFoto,
+                            :image_url => urlFoto,
                             :registration => matricula,
                             :legislation_situation => condicao
                             )
@@ -61,6 +119,31 @@ class Deputy < ActiveRecord::Base
         deputy.create_spent()
         puts "Deputado " + nomeParlamentar + " salvo."
       end
+    end
+  end
+
+  def self.parse_download_image_webservice
+    url_save = Rails.root.join("public","assets","deputies_image/").to_s
+    puts "Realizando Download das Imagens no WebService..."
+    self.all.each do |deputy|
+      name = "image"+deputy.id.to_s+".jpeg"
+
+      open(deputy.image_url) {|f|
+        File.open(url_save+name,'wb') do |file|
+          file.puts f.read
+        end
+      }
+    end
+    puts "Download Finalizado."
+    puts "Fazendo atribuição de image_path nos deputados..."
+    Deputy.image_path_route
+  end
+
+  def self.image_path_route 
+    self.all.each do |deputy|
+      route_path = Figaro.env.server_name+"deputies/image/"+deputy.id.to_s
+      deputy.image_path = route_path
+      deputy.save
     end
   end
   #:nocov:

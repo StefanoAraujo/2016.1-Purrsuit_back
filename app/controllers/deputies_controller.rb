@@ -73,6 +73,18 @@ class DeputiesController < ApplicationController
     followed_deputies = user.following
     render json: followed_deputies
   end
+#:nocov:
+  def image
+    deputy_id = params[:id]
+    deputy = Deputy.find_by(id: deputy_id)
+    url = Rails.root.join("public","assets","deputies_image/image").to_s
+    deputy_image_path = url+deputy.id.to_s+".jpeg"
+    send_file(deputy_image_path,
+     :disposition => 'inline',
+     :type => 'image/jpeg',
+     :x_senfile => true)
+  end
+  #:nocov:
 
   private
   def deputy_params
