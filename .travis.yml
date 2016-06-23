@@ -22,13 +22,12 @@ deploy:
   app:
     master: purrsuit-production
     desenvolvimento: purrsuit-staging
-  run:
-    - "rake db:drop"
-    - "rake db:create"
-    - "rake db:migrate"
-    - "rake parse:deputies"
-    - "rake parse:levels"
   on:
     branch: master
     run:
+      - "rake db:drop"
+      - "rake db:create"
+      - "rake db:migrate"
+      - "rake parse:deputies"
+      - "rake parse:levels"
       - "rake parse:expenses"
