@@ -1,4 +1,6 @@
 require 'zip'
+require 'open-uri'
+
 class Parser
 
   def self.request_xml http_link
