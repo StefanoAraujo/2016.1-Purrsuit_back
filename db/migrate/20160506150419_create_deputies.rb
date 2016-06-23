@@ -6,6 +6,7 @@ class CreateDeputies < ActiveRecord::Migration
       t.integer :registration
       t.string :legislation_situation
       t.integer :followers_count, :null => false, :default => 0
+      t.string :image_url
       t.string :image_path
       t.references :party
       t.references :uf

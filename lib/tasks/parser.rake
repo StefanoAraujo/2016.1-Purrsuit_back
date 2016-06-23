@@ -23,6 +23,10 @@ namespace :parse do
   end
 
   task expenses: :environment do
-      ExpenseType.parse_expenses      
+      ExpenseType.parse_expenses
+  end
+
+  task images: :environment do
+    Deputy.parse_download_image_webservice
   end
 end

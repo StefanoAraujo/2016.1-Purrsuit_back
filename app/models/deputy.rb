@@ -1,3 +1,6 @@
+require "open-uri"
+include Rails.application.routes.url_helpers
+
 class Deputy < ActiveRecord::Base
   acts_as :person
   belongs_to :uf
@@ -106,7 +109,7 @@ class Deputy < ActiveRecord::Base
                             :deputy_name => nomeParlamentar,
                             :gender => sexo,
                             :email => email,
-                            :image_path => urlFoto,
+                            :image_url => urlFoto,
                             :registration => matricula,
                             :legislation_situation => condicao
                             )
@@ -117,6 +120,32 @@ class Deputy < ActiveRecord::Base
         puts "Deputado " + nomeParlamentar + " salvo."
       end
     end
+  end
+
+  def self.parse_download_image_webservice
+    url_save = Rails.root.join("public","assets","deputies_image/").to_s
+    puts "Realizando Download das Imagens no WebService..."
+    self.all.each do |deputy|
+      name = "image"+deputy.id.to_s+".jpeg"
+
+      open(deputy.image_url) {|f|
+        File.open(url_save+name,'wb') do |file|
+          file.puts f.read
+        end
+      }
+    end
+    puts "Download Finalizado."
+    puts "Fazendo atribuição de image_path nos deputados..."
+    Deputy.image_path_route
+  end
+
+  def self.image_path_route
+    self.all.each do |deputy|
+      route_path = root_url+"deputies/image/"+deputy.id.to_s
+      deputy.image_path = route_path
+      deputy.save
+    end
+
   end
   #:nocov:
 end
