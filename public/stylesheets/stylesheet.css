@@ -1,5 +1,3 @@
-@import "bootstrap";
-
 #search-button{
 	margin-top: -25px;
 	margin-left: 620px;
@@ -98,7 +96,7 @@
 }
 
 .principalSquare{
-	width: 890px;
+	width: 1070px;
 	height: 500px;
 	background-color: transparent;
 	border-radius: 5px;
@@ -110,7 +108,7 @@
 	margin-top: 104px;
 }
 .listSquare{
-	width: 890px;
+	width: 1070px;
 	height: 440px;
 	margin-top: 30px;
 	overflow-y: scroll;
