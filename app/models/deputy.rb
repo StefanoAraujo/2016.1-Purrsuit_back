@@ -1,5 +1,5 @@
 require "open-uri"
-include Rails.application.routes.url_helpers
+
 
 class Deputy < ActiveRecord::Base
   acts_as :person
@@ -139,13 +139,12 @@ class Deputy < ActiveRecord::Base
     Deputy.image_path_route
   end
 
-  def self.image_path_route
+  def self.image_path_route 
     self.all.each do |deputy|
-      route_path = root_url+"deputies/image/"+deputy.id.to_s
+      route_path = Figaro.env.server_name+"deputies/image/"+deputy.id.to_s
       deputy.image_path = route_path
       deputy.save
     end
-
   end
   #:nocov:
 end

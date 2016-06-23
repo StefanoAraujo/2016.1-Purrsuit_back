@@ -24,6 +24,8 @@ gem 'rubyzip'
 
 gem 'active_record-acts_as'
 
+gem 'figaro'
+
 
 # Integration with ionic
 gem 'rack-cors', :require => 'rack/cors'
