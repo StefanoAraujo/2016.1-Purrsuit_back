@@ -6,6 +6,7 @@ class Spent < ActiveRecord::Base
   def add_expense expense
     self.expense_types << expense
   end
+#:nocov:
 
   def total_cost_value?
       t_value = 0
@@ -73,7 +74,7 @@ class Spent < ActiveRecord::Base
     return subquota_total ['137']
   end
 
-#:nocov:
+
 
 end
 
