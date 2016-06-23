@@ -77,8 +77,8 @@ class UsersController < ApplicationController
     @user = User.find_by(id: user_id)
     @user.update(user_update_params)
     respond_to do |format|
-      format.html {redirect_to :users_all}
       format.json {render json: @user}
+      format.html {redirect_to :users_all}
     end
   end
 
@@ -133,7 +133,7 @@ class UsersController < ApplicationController
     if user && user.challengers.length < 3
       allQuests = []
       Quest.all.each do |quest|
-        allQuests << quest if !user.doing?(quest) || !user.quests.include?(quest)
+        allQuests << quest if !user.doing?(quest) && !user.quests.include?(quest)
       end
 
       questsAmount.to_i.times do
@@ -142,8 +142,8 @@ class UsersController < ApplicationController
         allQuests.delete(random)
       end
 
-      render :nothing => true
     end
+    render :nothing => true
   end
 #:nocov:
 
@@ -154,7 +154,7 @@ class UsersController < ApplicationController
 
     def user_update_params
       params.require(:user).permit(:name, :nickname, :experience_points, :email,
-      :password, :gender, :age, :level, :uf_id)
+      :password, :gender, :age, :level, :uf_id, :last_acess)
     end
 
     def users_by_XP

@@ -49,7 +49,12 @@ class User < ActiveRecord::Base
   end
 
   def doing?(quest)
-    challengers.include?(quest)
+    relationships = QuestRelationship.where(challenged_id: self.id)
+    doing_quests = []
+    relationships.each do |quest|
+      doing_quests << Quest.find(quest.challenger_id)
+    end
+    doing_quests.include?(quest)
   end
 
 end
