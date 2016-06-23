@@ -3,6 +3,7 @@ require 'open-uri'
 
 class Parser
 
+#:nocov:
   def self.request_xml http_link
     uri = URI.parse(http_link)
     request = Net::HTTP::Get.new(uri.to_s)
@@ -40,5 +41,5 @@ class Parser
       zf.extract(entry, 'xml/expenses.xml') unless File.exist?('xml/expenses.xml')
     end
   end
-
+#:nocov:
 end

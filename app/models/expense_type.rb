@@ -1,13 +1,21 @@
 class ExpenseType < ActiveRecord::Base
   belongs_to :spent
 
+#:nocov:
   def self.parse_expenses
       Parser.download_zip "http://www.camara.gov.br/cotas/AnoAtual.zip"
       Parser.extract_zip 'xml/AnoAtual.zip'
-      xml_doc = Parser.get_xml false, 'DESPESAS', 'xml/expenses.xml'
-      ExpenseType.save_expenses(xml_doc)
+      ExpenseType.get_nodes 'xml/expenses.xml'
       File.delete('xml/expenses.xml')
       File.delete('xml/AnoAtual.zip')
+  end
+
+  def self.get_nodes file
+    Nokogiri::XML::Reader(File.open(file)).each do |node|
+      if node.name == 'DESPESA' && node.node_type == Nokogiri::XML::Reader::TYPE_ELEMENT
+          ExpenseType.save_expenses Nokogiri::XML(node.outer_xml)
+      0end
+    end
   end
 
   def self.save_expenses xml_doc
@@ -48,7 +56,7 @@ class ExpenseType < ActiveRecord::Base
   end
 
 end
-
+#:nocov:
 # 1 MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR - OK(4)
 # 4 CONSULTORIAS, PESQUISAS E TRABALHOS TÉCNICOS - OK(10)
 # 3 COMBUSTÍVEIS E LUBRIFICANTES - OK(8)
