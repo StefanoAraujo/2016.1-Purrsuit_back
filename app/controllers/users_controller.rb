@@ -30,14 +30,14 @@ class UsersController < ApplicationController
 
   def show
     id_user = params[:id]
-        users = User.where(id: id_user)
-        @user = nil
-        if (users.length > 0)
-          @user = users.first
-        else
-          raise "ERROR: No user to be shown"
-        end
-          render json: @user
+    users = User.where(id: id_user)
+    @user = nil
+    if (users.length > 0)
+      @user = users.first
+    else
+      raise "ERROR: No user to be shown"
+    end
+    render json: @user
   end
 
   def new
@@ -68,8 +68,8 @@ class UsersController < ApplicationController
     id_users = params[:id]
     user = nil
     users = User.where(id: id_users)
-      @user = users.first
-      render :edit
+    @user = users.first
+    render :edit
   end
 
   def update

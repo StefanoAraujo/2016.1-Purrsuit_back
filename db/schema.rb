@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160622041555) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "achievements", force: :cascade do |t|
   end
 
@@ -82,15 +85,15 @@ ActiveRecord::Schema.define(version: 20160622041555) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "quest_relationships", ["challenged_id"], name: "index_quest_relationships_on_challenged_id"
-  add_index "quest_relationships", ["challenger_id", "challenged_id"], name: "index_quest_relationships_on_challenger_id_and_challenged_id", unique: true
-  add_index "quest_relationships", ["challenger_id"], name: "index_quest_relationships_on_challenger_id"
+  add_index "quest_relationships", ["challenged_id"], name: "index_quest_relationships_on_challenged_id", using: :btree
+  add_index "quest_relationships", ["challenger_id", "challenged_id"], name: "index_quest_relationships_on_challenger_id_and_challenged_id", unique: true, using: :btree
+  add_index "quest_relationships", ["challenger_id"], name: "index_quest_relationships_on_challenger_id", using: :btree
 
   create_table "quests", force: :cascade do |t|
     t.integer "user_id"
   end
 
-  add_index "quests", ["user_id"], name: "index_quests_on_user_id"
+  add_index "quests", ["user_id"], name: "index_quests_on_user_id", using: :btree
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
@@ -99,15 +102,15 @@ ActiveRecord::Schema.define(version: 20160622041555) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
 
   create_table "spents", force: :cascade do |t|
     t.integer "deputy_id"
   end
 
-  add_index "spents", ["deputy_id"], name: "index_spents_on_deputy_id"
+  add_index "spents", ["deputy_id"], name: "index_spents_on_deputy_id", using: :btree
 
   create_table "ufs", force: :cascade do |t|
     t.string   "name"
@@ -127,4 +130,5 @@ ActiveRecord::Schema.define(version: 20160622041555) do
     t.string  "last_acess"
   end
 
+  add_foreign_key "quests", "users"
 end

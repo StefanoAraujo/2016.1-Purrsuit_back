@@ -23,7 +23,7 @@ class DeputiesController < ApplicationController
   end
 
   def search
-    deputy_contains = params[:toSearch]
+    deputy_contains = params[:toSearch].upcase
 
     deputy_contains.strip!
     if deputy_contains.length
