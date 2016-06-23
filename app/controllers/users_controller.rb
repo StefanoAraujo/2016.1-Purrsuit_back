@@ -10,15 +10,22 @@ class UsersController < ApplicationController
   end
 
   def ranking
-    @users = User.all
-    ranking = @users.sort_by do |user|
-      [-user.experience_points, user.nickname]
-    end
+    ranking = users_by_XP
     result = []
     ranking[0..19].each do |user|
       result << user
     end
     render json: result
+  end
+
+  def ranking_user
+    id_user = params[:id]
+    user = User.find(id_user)
+    ranking = users_by_XP
+    position = []
+
+    position << ranking.index(user) + 1
+    render json: position
   end
 
   def show
@@ -148,5 +155,12 @@ class UsersController < ApplicationController
     def user_update_params
       params.require(:user).permit(:name, :nickname, :experience_points, :email,
       :password, :gender, :age, :level, :uf_id)
+    end
+
+    def users_by_XP
+      users = User.all
+      ranking = users.sort_by do |user|
+        [-user.experience_points, user.nickname]
+      end
     end
 end
