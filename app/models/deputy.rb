@@ -24,6 +24,61 @@ class Deputy < ActiveRecord::Base
     self.spent.total_cost_value?
   end
 
+  def total_office_cost
+    self.spent.total_office_cost?
+  end
+
+  def total_contract_cost
+    self.spent.total_contract_cost?
+  end
+
+  def total_gas_cost
+    self.spent.total_gas_cost?
+  end
+
+  def total_postal_cost
+    self.spent.total_postal_cost?
+  end
+
+  def total_advertising_cost
+    self.spent.total_advertising_cost?
+  end
+
+  def total_security_cost
+    self.spent.total_security_cost?
+  end
+
+  def total_air_ticket_cost
+    self.spent.total_air_ticket?
+  end
+
+  def total_phone_cost
+    self.spent.total_phone_cost?
+  end
+
+  def total_alimentation_cost
+    self.spent.total_alimentation_cost?
+  end
+
+  def total_accommodation_cost
+    self.spent.total_accommodation_cost?
+  end
+
+  def total_vehicle_tenancy_cost
+    self.spent.total_vehicle_tenancy?
+  end
+
+  def total_participation_cost
+    self.spent.total_participation_cost?
+  end
+
+
+
+
+
+
+
+
 #:nocov:
   def self.parse_deputies
     response = Parser.request_xml("http://www.camara.leg.br/SitCamaraWS/Deputados.asmx/ObterDeputados")
