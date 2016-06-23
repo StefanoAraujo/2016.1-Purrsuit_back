@@ -1,6 +1,6 @@
 class ExpenseType < ActiveRecord::Base
   belongs_to :spent
-
+#:nocov:
   def self.parse_expenses
       Parser.download_zip "http://www.camara.gov.br/cotas/AnoAtual.zip"
       Parser.extract_zip 'xml/AnoAtual.zip'
@@ -46,7 +46,7 @@ class ExpenseType < ActiveRecord::Base
         end
     end
   end
-
+#:nocov:
 end
 
 # 1 MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR - OK(4)
