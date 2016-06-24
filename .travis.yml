@@ -24,9 +24,3 @@ deploy:
     master: purrsuit-production
   on:
     repo: PurrSuit/backend_purrsuit
-  run:
-    - "rake db:reset"
-    - "rake db:migrate"
-    - "rake parse:deputies"
-    - "rake parse:levels"
-    - "rake parse:expenses"

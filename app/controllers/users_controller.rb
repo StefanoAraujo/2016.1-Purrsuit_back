@@ -124,7 +124,6 @@ class UsersController < ApplicationController
     end
   end
 
-#:nocov:
   def receive_quests
     user_id = params[:userId]
     user = User.find_by(id: user_id)
@@ -145,7 +144,6 @@ class UsersController < ApplicationController
     end
     render :nothing => true
   end
-#:nocov:
 
   private
     def user_params

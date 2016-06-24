@@ -22,9 +22,7 @@ class ExpenseType < ActiveRecord::Base
     xml_doc.xpath("//DESPESA").each do |d|
         matriculaParlamentar = d.elements[2].text.to_s.to_i
         deputy = Deputy.find_by_registration(matriculaParlamentar)
-
         if deputy == nil
-            puts matriculaParlamentar
             next
         end
 
