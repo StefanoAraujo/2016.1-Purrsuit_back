@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       end
     rescue RuntimeError => error_login
       puts "#{error_login}"
-      redirect_to 'login'
+      redirect_to '/login'
     end
   end
 
